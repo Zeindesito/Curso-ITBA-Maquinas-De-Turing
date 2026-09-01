@@ -26,12 +26,9 @@ body {
 
 /* Logo */
 .logo {
-    font-family: 'Inter', sans-serif;
-    font-size: 2.2rem;
-    font-weight: 700;
-    color: #A0522D;/* Tono madera */
-    text-decoration: none;
-    letter-spacing: -1px;
+    width: 60px;          /* Ajusta este valor al tamaño visual deseado (ej. 50px - 70px) */
+    height: auto;         /* Mantiene la proporción original sin deformar */
+    display: block;
 }
 
 /* Navegación Central */
@@ -158,17 +155,51 @@ body {
 }
 
 /* Descripción */
+
+.seccion-hero {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 3rem;
+    padding: 2.5rem 4rem 4rem 4rem;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+/* Columna izquierda */
+.contenido-hero {
+    flex: 1;
+    max-width: 540px;
+}
+
 .descripcion-hero {
     font-family: 'Inter', sans-serif;
     font-weight: 400;
-    font-size: 1.05rem;
-    line-height: 1.6;
+    font-size: 1.05rem; /* Tamaño de fuente ligeramente mayor para mejorar la legibilidad */
+    line-height: 1.6;/* Espaciado de línea cómodo para lectura */
     color: #5A524C;
-    margin-bottom: 2.2rem;
-    max-width: 480px;            /* Controla el ancho de lectura */
+    margin-bottom: 2.2rem;/* Espacio antes de los botones */
+    max-width: 480px;/* Controla el ancho de lectura */
+}
+/* Columna Derecha (Imagen) */
+.imagen-hero-caja {
+    flex: 1;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+.imagen-hero {
+   width: 100%;
+    max-width: 624px;
+    height: 500px;
+    object-fit: cover;
+    border-radius: 16px;
+    display: block;
 }
 
-/* 3. Botones y CTAs */
+
+
+/* Botones */
 .botones-hero {
     display: flex;
     gap: 1rem;
@@ -202,14 +233,14 @@ body {
     background-color: transparent;
     color: #2D2622;
     font-family: 'Inter', sans-serif;
-    font-weight: 500;
-    font-size: 0.78rem;
+    font-weight: 500;/* Inter Medium */
+    font-size: 0.78rem;/* Tamaño de fuente para CTAs */
     letter-spacing: 0.08em;
     text-decoration: none;
     padding: 0.85rem 1.6rem;
     border-radius: 6px;
     border: 1px solid #2D2622;
-    transition: all 0.2s ease;
+    transition: all 0.2s ease;/* Transición suave para hover */
 }
 
 .boton-secundario:hover {
@@ -217,18 +248,30 @@ body {
     color: #F5E6D3;
 }
 
-/* 4. Columna Derecha (Imagen) */
-.imagen-hero-caja {
-    flex: 1;                     /* Ocupa el 50% del espacio restante */
-    display: flex;
-    justify-content: flex-end;
+/*----------------------------------------------------------SECCION CITA---------------------------------------------------*/
+.seccion-cita{
+    text-align: center;/* Centra el texto y elementos en línea */
+    max-width: 860px;/* Limita el ancho para que no se estire demasiado */
+    margin: 5rem auto;/* 'auto' a los lados centra la caja completa en la página */
+    padding: 0 1.5rem;/* Margen interno para pantallas pequeñas */
 }
 
-.imagen-hero {
-    width: 100%;
-    max-width: 580px;
-    height: 440px;
-    object-fit: cover;           /* Evita que la foto se deforme o estire */
-    border-radius: 16px;         /* Esquinas redondeadas del diseño */
-    display: block;
+.texto-cita {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 2.1rem;
+    font-weight: 700;/* Negrita según el manual para títulos/citas */
+    line-height: 1.35;/* Espaciado de línea cómodo para citas */
+    color: #2D2622;
+    margin-bottom: 2rem;/* Espacio antes del autor */
+}
+
+.autor-cita {
+    display: block;/* Permite aplicarle márgenes y tipografía de bloque */
+    font-family: 'Inter', sans-serif;
+    font-weight: 500;/* Inter Medium */
+    font-size: 0.8rem;/* Tamaño de fuente para leyendas/subtítulos */
+    letter-spacing: 0.12em;
+    color: #4A6B53;/* Tono verde bosque sobrio */
+    text-transform: uppercase;/* Convierte el texto a mayúsculas */
+    font-style: normal;/* Quita la cursiva por defecto de la etiqueta <cite> */
 }
