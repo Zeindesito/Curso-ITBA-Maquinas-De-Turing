@@ -26,8 +26,8 @@ body {
 
 /* Logo */
 .logo {
-    width: 60px;          /* Ajusta este valor al tamaño visual deseado (ej. 50px - 70px) */
-    height: auto;         /* Mantiene la proporción original sin deformar */
+    width: 120px;/* Ajusta este valor al tamaño visual deseado (ej. 50px - 70px) */
+    height: auto;/* Mantiene la proporción original sin deformar */
     display: block;
 }
 
@@ -133,25 +133,23 @@ body {
     align-items: flex-start;     /* Alinea todo hacia la izquierda */
 }
 
-/* Subtítulo / Leyenda superior */
-.subtitulo-superior {
-    font-family: 'Inter', sans-serif;
-    font-weight: 500;
-    font-size: 0.8rem;
-    letter-spacing: 0.1em;
-    color: #87A96B;             /* Verde Salvia del manual */
-    margin-bottom: 1.2rem;
-}
 
 /* Título Principal */
 .titulo-hero {
-    font-family: 'Inter', sans-serif; /* En el mockup se usa Sans Serif gruesa */
-    font-size: 3.5rem;
+    font-family: 'Inter', sans-serif;
+    font-size: 4.5rem;                  /* Antes 3.5rem */
     font-weight: 700;
-    line-height: 1.1;
+    line-height: 1.05;
     color: #2D2622;
+    margin-bottom: 1.8rem;
+    letter-spacing: -0.04em;
+}
+
+/* Leyenda superior */
+.subtitulo-superior {
+    font-size: 0.9rem;
+    letter-spacing: 0.12em;
     margin-bottom: 1.5rem;
-    letter-spacing: -0.03em;
 }
 
 /* Descripción */
@@ -160,44 +158,42 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    gap: 3rem;
-    padding: 2.5rem 4rem 4rem 4rem;
-    max-width: 1400px;
+    gap: 4rem;
+    /* Aumentamos el ancho máximo y el padding vertical */
+    max-width: 1600px;/* Antes 1400px: ahora abarca más pantalla */
     margin: 0 auto;
+    padding: 5rem 4rem 7rem 4rem;/* Más espacio arriba y abajo */
+    min-height: calc(90vh - 100px);/* Ocupa casi toda la altura visible de la pantalla */
 }
 
 /* Columna izquierda */
 .contenido-hero {
-    flex: 1;
-    max-width: 540px;
+    flex: 1;/* Ocupa el 50% del espacio disponible */
+    max-width: 680px;/* Limita el ancho de la columna izquierda para mejorar la legibilidad */
 }
 
 .descripcion-hero {
-    font-family: 'Inter', sans-serif;
-    font-weight: 400;
-    font-size: 1.05rem; /* Tamaño de fuente ligeramente mayor para mejorar la legibilidad */
-    line-height: 1.6;/* Espaciado de línea cómodo para lectura */
-    color: #5A524C;
-    margin-bottom: 2.2rem;/* Espacio antes de los botones */
-    max-width: 480px;/* Controla el ancho de lectura */
+    font-size: 1.2rem;/* Antes 1.05rem */
+    line-height: 1.7;
+    margin-bottom: 2.5rem;
+    max-width: 580px;
 }
+
 /* Columna Derecha (Imagen) */
 .imagen-hero-caja {
-    flex: 1;
+    flex: 1.2;                          /* Le da un poco más de peso visual a la imagen */
     display: flex;
     justify-content: flex-end;
-    align-items: center;
 }
+
 .imagen-hero {
-   width: 100%;
-    max-width: 624px;
+    width: 100%;
+    max-width: 700px;
     height: 500px;
-    object-fit: cover;
-    border-radius: 16px;
-    display: block;
+    object-fit: cover;/* Mantiene la proporción y recorta si es necesario */
+    border-radius: 16px;/* Bordes redondeados para suavizar la imagen */
+    display: block;/* Asegura que la imagen se comporte como un bloque */
 }
-
-
 
 /* Botones */
 .botones-hero {
@@ -251,14 +247,14 @@ body {
 /*----------------------------------------------------------SECCION CITA---------------------------------------------------*/
 .seccion-cita{
     text-align: center;/* Centra el texto y elementos en línea */
-    max-width: 860px;/* Limita el ancho para que no se estire demasiado */
-    margin: 5rem auto;/* 'auto' a los lados centra la caja completa en la página */
+    max-width: 1600px;/* Limita el ancho para que no se estire demasiado */
+    margin: 0 auto;/* 'auto' a los lados centra la caja completa en la página */
     padding: 0 1.5rem;/* Margen interno para pantallas pequeñas */
 }
 
 .texto-cita {
     font-family: 'Playfair Display', Georgia, serif;
-    font-size: 2.1rem;
+    font-size: 3rem;
     font-weight: 700;/* Negrita según el manual para títulos/citas */
     line-height: 1.35;/* Espaciado de línea cómodo para citas */
     color: #2D2622;
@@ -271,7 +267,130 @@ body {
     font-weight: 500;/* Inter Medium */
     font-size: 0.8rem;/* Tamaño de fuente para leyendas/subtítulos */
     letter-spacing: 0.12em;
-    color: #4A6B53;/* Tono verde bosque sobrio */
+    color: #87A96B;/* Tono verde bosque sobrio */
     text-transform: uppercase;/* Convierte el texto a mayúsculas */
     font-style: normal;/* Quita la cursiva por defecto de la etiqueta <cite> */
+}
+
+/*----------------------------------------------------------SECCION DESTACADOS---------------------------------------------------*/
+.seccion-destacados{
+    max-width: 1600px;/* Limita el ancho para pantallas grandes */
+    margin: 5rem auto;/* Centra la sección y agrega espacio superior e inferior */
+    padding: 0 4rem; 
+}
+
+.destacados-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 2.5rem;
+}
+
+.subtitulo-superior {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 0.3rem;
+}
+
+.titulo-seccion {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 2.6rem;
+    font-weight: 700;
+    color: #2D2622;
+    margin-top: 0.4rem;
+}
+
+.boton-coleccion{
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    /* Forma y bordes */
+    border: 1.5px solid #2D2622;
+    border-radius: 9999px;          /* Hace los lados completamente redondeados */
+    padding: 0.8rem 1.8rem;         /* Espacio interno para dar forma ovalada */
+    background-color: transparent;
+    /* Tipografía según manual (Inter Medium, mayúsculas, espaciado 0.08em) */
+    font-family: 'Inter', sans-serif;
+    font-weight: 500;
+    font-size: 0.78rem;
+    letter-spacing: 0.08em;
+    color: #2D2622;
+    text-decoration: none;
+    /* Transición de interacción */
+    transition: all 0.2s ease;/* Transición suave para hover */
+}
+
+/* Cuadrícula de 4 columnas */
+.contenedor-grilla {
+    display: grid;/* Utiliza un sistema de grilla para organizar las tarjetas */
+    grid-template-columns: repeat(4, 1fr); /* 4 columnas iguales */
+    gap: 1.5rem;/* Espacio entre tarjetas */
+}
+
+/* Tarjeta Individual */
+.tarjeta-producto {
+    display: flex;/* Contenedor flexible para la tarjeta */
+    flex-direction: column;/* Organiza la imagen y la información en columna */
+}
+
+/* Contenedor de la Imagen con esquinas redondeadas */
+.producto-imagen-caja {
+    width: 100%;
+    aspect-ratio: 1 / 1;/* Mantiene la foto en proporción cuadrada perfecta */
+    border-radius: 16px;
+    overflow: hidden;/* Evita que la imagen sobresalga de los bordes redondeados */
+    margin-bottom: 1.2rem;
+    
+}
+
+
+/*imagenes individuales*/
+.producto-imagen {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.3s ease;/* Transición suave para el efecto hover */
+    background-color: #f4f1f0;/* Color de fondo mientras carga la imagen */
+}
+
+.producto-nombre {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: #2D2622;
+}
+
+.producto-precio {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: #C47A6D;/* Rosa Polvoriento */
+}
+
+/* Descripción */
+.producto-descripcion {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #6E6660;
+    margin-bottom: 1rem;
+    flex-grow: 1;/* Empuja el enlace 'Ver Detalles' al fondo */
+}
+
+.producto-enlace {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: #2D2622;
+    text-decoration: underline;
+    text-underline-offset: 4px;
+    display: inline-block;
+    transition: color 0.2s ease;
+}
+
+.producto-enlace:hover {
+    color: #A0522D;/* Siena Tostado */
 }
