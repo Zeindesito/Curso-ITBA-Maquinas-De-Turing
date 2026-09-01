@@ -106,8 +106,10 @@ if (productoElegido === null) {
 
     botonAgregar.addEventListener("click", function () {
 
-        // agregarAlCarrito vive en js/carrito.js. Esa función ya se encarga
-        // sola de guardar el producto y de actualizar el número del header.
-        agregarAlCarrito(productoElegido);
+        // agregarAlCarrito vive en js/carrito.js y espera el ID del producto,
+        // NO el objeto entero. Adentro guarda { id, cantidad } para poder
+        // sumar unidades si agregás el mismo mueble dos veces.
+        // Ella sola se encarga de actualizar el número del header.
+        agregarAlCarrito(productoElegido.id);
     });
 }
