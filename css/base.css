@@ -1,0 +1,144 @@
+/* ==========================================
+   VARIABLES DE MARCA (MANUAL 2026)
+   ========================================== */
+:root {
+    --color-siena-tostado: #A0522D;
+    --color-siena-hover: #8B4513;
+    --color-verde-salvia: #87A96B;
+    --color-verde-claro: #E8EFE6;
+    --color-alabastro-calido: #F5E6D3;
+    --color-alabastro-fondo: #F9F4EE; /* Variante más clara para el fondo general */
+    --color-vara-de-oro: #D4A437;
+    --color-negro: #1A1A1A;
+    --color-gris-oscuro: #333333;
+    --color-blanco: #FFFFFF;
+    --color-marron-oscuro: #2D241F; /* Para el footer */
+
+    --font-primary: 'Inter', sans-serif;
+    --font-secondary: 'Playfair Display', serif;
+}
+
+/* ==========================================
+   RESET Y ESTILOS GLOBALES
+   ========================================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-primary);
+    background-color: var(--color-alabastro-fondo);
+    color: var(--color-negro);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+    transition: color 0.3s ease;
+}
+
+ul {
+    list-style: none;
+}
+
+/* Tipografía de Títulos */
+h1, h2, h3, .logo, .titulo-tarjeta-taller {
+    font-family: var(--font-secondary);
+    color: var(--color-negro);
+    font-weight: 700;
+}
+
+.subtitulo-superior {
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    color: var(--color-verde-salvia);
+    text-transform: uppercase;
+    margin-bottom: 0.5rem;
+}
+
+/* ==========================================
+   BOTONES Y ETIQUETAS
+   ========================================== */
+.boton-principal, .boton-secundario {
+    display: inline-block;
+    padding: 12px 24px;
+    font-family: var(--font-primary);
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-align: center;
+}
+
+.boton-principal {
+    background-color: var(--color-siena-tostado);
+    color: var(--color-blanco);
+    border: 1px solid var(--color-siena-tostado);
+}
+
+.boton-principal:hover {
+    background-color: var(--color-siena-hover);
+}
+
+.boton-secundario {
+    background-color: transparent;
+    color: var(--color-negro);
+    border: 1px solid var(--color-negro);
+}
+
+.boton-secundario:hover {
+    background-color: var(--color-negro);
+    color: var(--color-blanco);
+}
+
+.tag-huella, .tag-huella-footer {
+    background-color: var(--color-verde-claro);
+    color: var(--color-verde-salvia);
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+}
+
+.tag-huella-footer {
+    background-color: rgba(255,255,255,0.1);
+    color: var(--color-verde-salvia);
+}
+
+/* ==========================================
+   FORMULARIOS BASE
+   ========================================== */
+label {
+    display: block;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    color: var(--color-gris-oscuro);
+    margin-bottom: 0.5rem;
+}
+
+.campo-formulario {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid rgba(0,0,0,0.1);
+    border-radius: 4px;
+    background-color: var(--color-blanco);
+    font-family: var(--font-primary);
+    font-size: 0.9rem;
+    margin-bottom: 1.5rem;
+    transition: border-color 0.3s;
+}
+
+.campo-formulario:focus {
+    outline: none;
+    border-color: var(--color-siena-tostado);
+}

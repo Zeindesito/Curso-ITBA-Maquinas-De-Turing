@@ -9,7 +9,10 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700&family=Playfair+Display:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet">
 
-    <link rel="stylesheet" href="">
+    <link rel="stylesheet" href="css/base.css">
+<link rel="stylesheet" href="css/layout.css">
+<!-- Va ultimo: lo que se escriba aca gana sobre base y layout -->
+<link rel="stylesheet" href="css/componentes.css">
 </head>
 <body>
     <header class="encabezado-principal">
@@ -25,7 +28,7 @@
         <div class="bloque-derecho-header">
             <span class="tag-huella">🍃 HUELLA NEUTRA 2026</span>
             <button class="boton-carrito" id="boton-carrito" aria-label="Ver carrito">
-            <span id="contador-carrito">0</span>
+            <span class="contador-carrito" id="contador-carrito">0</span>
             </button>
         </div>
     </header>
@@ -44,24 +47,40 @@
 
             <!--Derecha: Formulario-->
             <div class="formulario">
-                <form id="formulario-contacto" class="formulario-contacto">
-                    <div>
-                        <div>
+                <!-- novalidate: apaga la validacion propia del navegador para que el evento
+                 submit llegue a js/contacto.js y corra SU validacion -->
+                <!-- La clase "form-consulta" es la que busca js/contacto.js para engancharse.
+                     "novalidate" apaga la validacion propia del navegador, para que el evento
+                     submit llegue al JS y corra la validacion escrita a mano. -->
+                <form id="formulario-contacto" class="formulario-contacto form-consulta" novalidate>
+
+                    <div class="fila-formulario">
+                        <!-- Cada campo va envuelto en un div con id="campo-XXX":
+                             js/contacto.js le agrega la clase "campo--error" cuando falla. -->
+                        <div id="campo-nombre" class="grupo-campo">
                             <label for="nombre">NOMBRE COMPLETO</label>
                             <input type="text" id="nombre" name="nombre" class="campo-formulario" placeholder="Ej. Mateo Messi" required>
+                            <!-- Aca adentro escribe el texto del error js/contacto.js -->
+                            <span id="error-nombre" class="mensaje-error"></span>
                         </div>
-                        <div>
-                            <label for="email" >EMAIL</label>
+
+                        <div id="campo-email" class="grupo-campo">
+                            <label for="email">EMAIL</label>
                             <input type="email" id="email" name="email" class="campo-formulario" placeholder="mateo@ejemplo.com" required>
+                            <span id="error-email" class="mensaje-error"></span>
                         </div>
                     </div>
 
-                    <div>
+                    <div id="campo-mensaje" class="grupo-campo">
                         <label for="mensaje">MENSAJE O PROYECTO</label>
                         <textarea id="mensaje" name="mensaje" class="campo-formulario" rows="5" placeholder="Cuéntanos qué tienes en mente..." required></textarea>
+                        <span id="error-mensaje" class="mensaje-error"></span>
                     </div>
 
                     <button type="submit" class="boton-principal">SOLICITAR CONSULTA</button>
+
+                    <!-- Arranca oculto. js/contacto.js le saca la clase "oculto" al enviar bien. -->
+                    <p class="mensaje-exito oculto">Gracias por escribirnos. Recibimos tu consulta y te respondemos a la brevedad.</p>
                 </form>
             </div>
 
@@ -104,6 +123,7 @@
     </footer>
 
     <!--Script de contacto-->
+    <script src="js/carrito.js"></script>
     <script src="js/contacto.js"></script>
 </body>
 </html>

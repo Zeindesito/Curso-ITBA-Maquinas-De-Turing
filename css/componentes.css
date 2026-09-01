@@ -1,0 +1,103 @@
+/* ============================================================
+   componentes.css  -  HOJA DE TRABAJO PENDIENTE
+
+   base.css   -> variables, reset y tipografia   (Matias)
+   layout.css -> estructura y responsive         (Matias)
+   este       -> lo que todavia no tiene estilos
+
+   Se carga ULTIMO en las 4 paginas, asi lo que se escriba aca
+   gana sobre las otras dos hojas sin pelear especificidad.
+   ============================================================ */
+
+
+/* ------------------------------------------------------------
+   RESCATADO de index.css (Lauchax)
+   Son las dos unicas reglas suyas que no estaban en base/layout.
+   ------------------------------------------------------------ */
+
+/* La bolita con el numero, arriba a la derecha del boton del carrito.
+
+   OJO: el .boton-carrito de layout.css NO es position: relative. Sin esto,
+   la bolita se posiciona contra el header (que es sticky, o sea posicionado)
+   y se sale 8px de la pantalla, generando scroll horizontal en las 4 paginas. */
+.boton-carrito {
+    position: relative;
+}
+
+.contador-carrito {
+    position: absolute;
+    top: -7px;
+    right: -8px;
+    min-width: 18px;
+    height: 18px;
+    padding: 0 4px;
+    border-radius: 9999px;
+    background-color: var(--color-siena-tostado, #A0522D);
+    color: var(--color-blanco, #FFFFFF);
+    font-family: var(--font-primary, 'Inter', sans-serif);
+    font-size: 0.7rem;
+    font-weight: 700;
+    line-height: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    pointer-events: none; /* que no robe los clicks del boton */
+    z-index: 2;
+}
+
+.contenido-hero {
+    flex: 1;
+    max-width: 540px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+
+/* ------------------------------------------------------------
+   UTILIDAD QUE NECESITAN DOS ARCHIVOS DE JS
+
+   js/carrito.js  -> se la pone al contador cuando esta en cero
+   js/contacto.js -> se la saca al mensaje de exito al enviar bien
+
+   Sin esta regla el mensaje de exito se ve desde que carga la
+   pagina, antes de que nadie envie nada.
+   ------------------------------------------------------------ */
+
+.oculto {
+    display: none !important;
+}
+
+
+/* ============================================================
+   DE ACA PARA ABAJO ESTA TODO POR ESCRIBIR
+   El detalle de cada bloque va en el documento aparte.
+   ============================================================ */
+
+
+/* --- Tarjetas de producto (home, catalogo y recomendados) --- */
+/* .contenedor-grilla ya esta en layout.css. Falta lo de adentro: */
+/* .tarjeta-producto .imagen-producto .nombre-producto
+   .descripcion-producto .precio-producto .boton-ver-detalle    */
+
+
+/* --- Pagina de catalogo --- */
+/* .pagina-catalogo .encabezado-catalogo .titulo-catalogo
+   .descripcion-catalogo .contenedor-filtros #campo-busqueda
+   .seccion-grilla-catalogo .contenedor-boton-cargar            */
+
+
+/* --- Pagina de detalle --- */
+/* .imagen-detalle .info-detalle .nombre-detalle .descripcion-detalle
+   .ficha-tecnica .fila-ficha .etiqueta-ficha .valor-ficha
+   .precio-detalle .seccion-historia .contenedor-historia
+   .titulo-historia .descripcion-historia                       */
+
+
+/* --- Formulario de contacto (validacion) --- */
+/* .grupo-campo .fila-formulario .mensaje-error .mensaje-exito
+   .campo--error                                                */
+
+
+/* --- Footer (lo que falta) --- */
+/* .footer-columna .info-marca .footer-redes .footer-eslogan     */
