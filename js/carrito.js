@@ -1,92 +1,149 @@
-/* ============================================================
-   CARRITO  ->  se carga en las 4 páginas
+/**
+ * carrrito.js
+ * -----------------------------------------------------------------------
+ * Lógica del carrito de compras simulado (sin backend).
+ * El carrito se guarda en localStorage para que el contador del header
+ * se mantenga aunque el usuario navegue entre páginas.
+ * Se incluye en TODAS las páginas del sitio.
+ * -----------------------------------------------------------------------
+ */
 
-   Puntos de la consigna que cubre este archivo:
-   - Carrito simulado con contador en el header
-   - Le da soporte al botón "Añadir al Carrito" de producto.html
+const CLAVE_CARRITO = "hj_carrito";
 
-   Guardamos la lista de productos, no solo la cantidad, para saber
-   QUÉ se agregó y no únicamente cuántos.
-   ============================================================ */
-
-
-/* ---------- 1. El contador del header ---------- */
-
-// Este <span> está en las 4 páginas con el mismo id, por eso este
-// archivo funciona igual en todas.
-const contadorCarrito = document.getElementById("contador-carrito");
-
-
-/* ---------- 2. Leer y guardar el carrito ---------- */
-
-// localStorage es una cajita del navegador que sobrevive al cambio de
-// página y a cerrar la pestaña. Tiene una limitación: SOLO GUARDA TEXTO.
-// Un array no entra tal cual, hay que traducirlo.
-
-function leerCarrito() {
-
-    const guardado = localStorage.getItem("carrito");
-
-    // La primera vez que alguien entra al sitio todavía no guardamos nada,
-    // y getItem devuelve null. Ahí arrancamos con un carrito vacío.
-    if (guardado === null) {
-        return [];
-    }
-
-    // JSON.parse toma el texto y lo vuelve a convertir en array de objetos.
-    return JSON.parse(guardado);
+/** Lee el carrito guardado en localStorage. */
+function obtenerCarrito() {
+  const datos = localStorage.getItem(CLAVE_CARRITO);
+  return datos ? JSON.parse(datos) : [];
 }
 
+/** Guarda el carrito en localStorage. */
 function guardarCarrito(carrito) {
-
-    // JSON.stringify hace el camino inverso: convierte el array en texto
-    // para que localStorage lo pueda guardar.
-    localStorage.setItem("carrito", JSON.stringify(carrito));
+  localStorage.setItem(CLAVE_CARRITO, JSON.stringify(carrito));
 }
 
-
-/* ---------- 3. Mostrar la cantidad en el header ---------- */
-
-function actualizarContador() {
-
-    const carrito = leerCarrito();
-
-    // length es la cantidad de elementos que tiene el array.
-    contadorCarrito.textContent = carrito.length;
+/** Suma la cantidad total de unidades en el carrito. */
+function obtenerCantidadTotal() {
+  return obtenerCarrito().reduce((total, item) => total + item.cantidad, 0);
 }
 
+/**
+ * Agrega un producto al carrito (o suma cantidad si ya estaba).
+ * @param {number} id
+ * @param {number} cantidad
+ */
+function agregarAlCarrito(id, cantidad = 1) {
+  const carrito = obtenerCarrito();
+  const item = carrito.find((p) => p.id === id);
 
-/* ---------- 4. Agregar un producto ---------- */
+  if (item) {
+    item.cantidad += cantidad;
+  } else {
+    carrito.push({ id, cantidad });
+  }
 
-// A esta función la va a llamar js/detalle.js cuando el usuario apriete
-// el botón "Añadir al Carrito".
-function agregarAlCarrito(producto) {
+  guardarCarrito(carrito);
+  actualizarContadorCarrito();
+}
 
-    const carrito = leerCarrito();
+/** Vacía todo el carrito. */
+function vaciarCarrito() {
+  guardarCarrito([]);
+  actualizarContadorCarrito();
+}
 
-    // Guardamos solo lo que necesitamos para identificarlo. No hace falta
-    // meter la descripción entera ni la ficha técnica.
-    carrito.push({
-        id: producto.id,
-        nombre: producto.nombre,
-        precio: producto.precio
+/** Actualiza el número que se muestra en el ícono del carrito del header. */
+function actualizarContadorCarrito() {
+  const contador = document.querySelector("#contador-carrito");
+  if (!contador) return;
+  const total = obtenerCantidadTotal();
+  contador.textContent = total;
+  contador.classList.toggle("oculto", total === 0);
+}
+
+/**
+ * Arma el contenido del mini-carrito desplegable del header,
+ * cruzando los ids guardados con los datos completos de PRODUCTOS.
+ */
+function renderizarMiniCarrito() {
+  const lista = document.querySelector("#lista-mini-carrito");
+  const vacioMsg = document.querySelector("#mini-carrito-vacio");
+  if (!lista) return;
+
+  const carrito = obtenerCarrito();
+  lista.innerHTML = "";
+
+  if (carrito.length === 0) {
+    if (vacioMsg) vacioMsg.hidden = false;
+    return;
+  }
+  if (vacioMsg) vacioMsg.hidden = true;
+
+  carrito.forEach((item) => {
+    const producto = PRODUCTOS.find((p) => p.id === item.id);
+    if (!producto) return;
+
+    const li = document.createElement("li");
+    li.className = "mini-carrito__item";
+    li.innerHTML = `
+      <img src="${rutaRelativaAssets(producto.imagen)}" alt="${producto.nombre}" class="mini-carrito__img">
+      <div class="mini-carrito__info">
+        <p class="mini-carrito__nombre">${producto.nombre}</p>
+        <p class="mini-carrito__detalle">${item.cantidad} x ${formatearPrecio(producto.precio)}</p>
+      </div>
+    `;
+    lista.appendChild(li);
+  });
+}
+
+/**
+ * Las páginas viven en distintos niveles (raíz), pero por consistencia
+ * dejamos este helper por si en el futuro se agregan subcarpetas.
+ */
+function rutaRelativaAssets(ruta) {
+  return ruta;
+}
+
+/**
+ * Inicializa el comportamiento del header: contador + apertura/cierre
+ * del mini-carrito + menú hamburguesa para mobile.
+ */
+function inicializarHeader() {
+  actualizarContadorCarrito();
+
+  const botonCarrito = document.querySelector("#boton-carrito");
+  const miniCarrito = document.querySelector("#mini-carrito");
+  const botonVaciar = document.querySelector("#vaciar-carrito");
+  const botonMenu = document.querySelector("#boton-menu");
+  const nav = document.querySelector("#nav-principal");
+
+  if (botonCarrito && miniCarrito) {
+    botonCarrito.addEventListener("click", (evento) => {
+      evento.stopPropagation();
+      renderizarMiniCarrito();
+      miniCarrito.classList.toggle("mini-carrito--abierto");
     });
 
-    guardarCarrito(carrito);
-    actualizarContador();
+    document.addEventListener("click", (evento) => {
+      if (!miniCarrito.contains(evento.target) && evento.target !== botonCarrito) {
+        miniCarrito.classList.remove("mini-carrito--abierto");
+      }
+    });
+  }
+
+  if (botonVaciar) {
+    botonVaciar.addEventListener("click", () => {
+      vaciarCarrito();
+      renderizarMiniCarrito();
+    });
+  }
+
+  if (botonMenu && nav) {
+    botonMenu.addEventListener("click", () => {
+      nav.classList.toggle("nav--abierto");
+      const expandido = botonMenu.getAttribute("aria-expanded") === "true";
+      botonMenu.setAttribute("aria-expanded", String(!expandido));
+    });
+  }
 }
 
-
-/* ---------- 5. Vaciar el carrito ---------- */
-
-function vaciarCarrito() {
-    localStorage.removeItem("carrito");
-    actualizarContador();
-}
-
-
-/* ---------- 6. Arranque ---------- */
-
-// Al cargar cualquiera de las 4 páginas mostramos el número que había
-// quedado guardado de antes.
-actualizarContador();
+document.addEventListener("DOMContentLoaded", inicializarHeader);
