@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hermanos Jota - Contacto</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700&family=Playfair+Display:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="">
+</head>
+<body>
+    <header class="encabezado-principal">
+        <a href="index.html" class="logo">hj</a>
+        <nav class="menu-navegacion">
+            <ul>
+                <li><a href="productos.html" class="enlace-navegacion">Colección</a></li>
+                <li><a href="index.html#nosotros" class="enlace-navegacion">Nosotros</a></li>
+                <li><a href="index.html#taller" class="enlace-navegacion">Taller</a></li>
+                <li><a href="contacto.html" class="enlace-navegacion">Contacto</a></li>
+            </ul>
+        </nav>
+        <div class="bloque-derecho-header">
+            <span class="tag-huella">🍃 HUELLA NEUTRA 2026</span>
+            <button class="boton-carrito" id="boton-carrito" aria-label="Ver carrito">
+            <span id="contador-carrito">0</span>
+            </button>
+        </div>
+    </header>
+
+    <!--MAIN EXCLUSIVO DE LA PÁGINA DE CONTACTO-->
+    <main>
+        <section class="seccion-contacto-pagina">
+            <!-- Izquierda: Textos -->
+            <div class="info-contacto-pagina">
+                <h1 class="titulo-contacto">Diseñemos tu espacio de paz</h1>
+                <p class="descripcion-contacto">¿Buscas una medida especial o un diseño totalmente personalizado? Agenda una cita de consulta presencial o virtual en nuestro taller.</p>
+                
+                <p class="dato-contacto">Calle del Taller 42, Ciudad</p>
+                <p class="dato-contacto">hola@hermanosjota.com</p>
+            </div>
+
+            <!--Derecha: Formulario-->
+            <div class="formulario">
+                <form id="formulario-contacto" class="formulario-contacto">
+                    <div>
+                        <div>
+                            <label for="nombre">NOMBRE COMPLETO</label>
+                            <input type="text" id="nombre" name="nombre" class="campo-formulario" placeholder="Ej. Mateo Messi" required>
+                        </div>
+                        <div>
+                            <label for="email" >EMAIL</label>
+                            <input type="email" id="email" name="email" class="campo-formulario" placeholder="mateo@ejemplo.com" required>
+                        </div>
+                    </div>
+
+                    <div>
+                        <label for="mensaje">MENSAJE O PROYECTO</label>
+                        <textarea id="mensaje" name="mensaje" class="campo-formulario" rows="5" placeholder="Cuéntanos qué tienes en mente..." required></textarea>
+                    </div>
+
+                    <button type="submit" class="boton-principal">SOLICITAR CONSULTA</button>
+                </form>
+            </div>
+
+        </section>
+    </main>
+
+    <footer class="pie-pagina">
+        <div class="footer-contenido"> 
+            <div class="footer-columna info-marca">
+                <h2 class="footer-logo">Hermanos Jota</h2>
+                <p class="footer-descripcion">
+                    Mobiliario de autor diseñado para sanar espacios cotidianos y respetar la biodiversidad terrestre de las generaciones futuras.
+                </p>
+                <span class="tag-huella-footer">🍃 HUELLA NEUTRA 2026</span>
+            </div>
+
+            <div class="footer-columna">
+                <h3 class="footer-titulo-seccion">CONTACTO</h3>
+                <p>Calle del Taller 42, Ciudad</p>
+                <p><a href="tel:+5491142424242">+54 9 11 4242 4242</a></p>
+                <p><a href="mailto:hola@hermanosjota.com">hola@hermanosjota.com</a></p>
+            </div>
+
+            <div class="footer-columna">
+                <h3 class="footer-titulo-seccion">REDES</h3>
+                <ul class="footer-redes">
+                    <li><a href="https://instagram.com" target="_blank" rel="noopener noreferrer">Instagram</a></li>
+                    <li><a href="https://pinterest.com" target="_blank" rel="noopener noreferrer">Pinterest</a></li>
+                    <li><a href="#">Journal</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <hr class="footer-linea">
+
+        <div class="footer-inferior">
+            <p>&copy; 2026 Hermanos Jota. Todos los derechos reservados.</p>
+            <p class="footer-eslogan">Artesanía lenta y diseño consciente.</p>
+        </div>
+    </footer>
+
+    <!--Script de contacto-->
+    <script src="js/contacto.js"></script>
+</body>
+</html>

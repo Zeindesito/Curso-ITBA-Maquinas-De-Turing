@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hermanos Jota - Muebleria Artesanal</title>
+
+    <!--Tipografía manual de marca-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700&family=Playfair+Display:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet">
+
+    <!--Para el css-->
+    <link rel="stylesheet" href="">
+</head>
+<body>
+    <header class="encabezado-principal">
+        <a href="index.html" class="logo">hj</a>
+
+        <nav class="menu-navegacion">
+            <ul>
+                <li><a href="productos.html" class="enlace-navegacion">Coleccion</a></li>
+                <li><a href="#nosotros" class="enlace-navegacion">Nosotros</a></li>
+                <li><a href="#taller" class="enlace-navegacion">Taller</a></li>
+                <li><a href="contacto.html" class="enlace-navegacion">Contacto</a></li>
+            </ul>
+        </nav>
+        <div class="bloque-derecho-header">
+            <span class="tag-huella">🍃 HUELLA NEUTRA 2026</span>
+            <button class="boton-carrito" id="boton-carrito" aria-label="Ver carrito">
+                <span id="contenedor-carrito">0</span>
+            </button>
+        </div>
+    </header>
+    <main>
+
+    <!--Hero-->
+        <section class="seccion-hero">
+            <div class="contenido-hero">
+                <p class="subtitulo-superior">ARTESANÍA & CONSCIENCIA</p>
+                <h1 class="titulo-hero">Muebles que <br>alimentan el alma</h1>
+                <p>Nuestra colección combina la calidez del diseño clásico con la conciencia de la sustentabilidad.</p>
+                <div class="botones-hero">
+                    <a href="productos.html" class="boton-principal">Explorar colección</a> 
+                    <a href="#nosotros" class="boton-secundario">Nuestro manifiesto</a>    
+                </div>
+            </div>
+        </section>
+        <section class="seccion-cita" id="nosotros">
+            <blockquote class="texto-cita">
+                "Diseñar hoy significa pedirle permiso al mañana. No creamos objetos desechables; forjamos reliquias familiares sustentables."
+            </blockquote>
+            <cite class="autor-cita">- LOS HERMANOS JOTA, FUNDADORES</cite>
+        </section>
+    <!--Productos destacados-->
+        <section class="seccion-destacados">
+            <p class="subtitulo-superior">EDICIONES LIMITADAS</p>
+            <h2>Piezas con alma propia</h2>
+            <a href="productos.html" class="boton-secundario">Ver toda la colección</a>
+            <!--gancho para productos destacados JS creo-->
+            <div id="contenedor-destacados" class="contenedor-grilla"></div>
+        </section>
+
+    <!--Taller-->
+        <section id="taller" class="seccion-taller">
+            <!--Encabezado seccion taller-->
+            <p class="subtitulo-superior">ARTESANÍA LENTA</p>
+            <h2 class="titulo-taller">Donde la madera vuelve a respirar</h2>
+            <!---->
+            <div class="contenedor-taller">
+                <!--Imagen con texto superpuesto-->
+                <div class="taller-imagen-caja">
+                    <img src="assets/taller.jpg" alt="restauracion de madera" class="imagen-taller-foto">
+                    <h3 class="texto-superpuesto">Restauración consciente de madera local</h3>
+                </div>
+                <!--Tarjetas informativas -->
+                <div class="taller-tarjetas-caja">
+                    <!--Tarjeta 1(Fondo claro)-->
+                    <article class="tarjeta-info-taller tarjeta-clara">
+                        <h4 class="titulo-tarjeta-taller">Abastecimiento Ético</h4>
+                        <p>Trabajamos exclusivamente con árboles caídos de forma natural y maderas de demolición históricas de la región, dándoles una segunda vida noble.</p>
+                    </article>
+
+                    <!--Tarjeta 2(Fondo Verde Salvia Claro)-->
+                    <article class="tarjeta-info-taller tarjeta-verde">
+                        <h4 class="titulo-tarjeta-taller">Huella Regenerativa</h4>
+                        <p>Por cada pieza adquirida, plantamos tres árboles autóctonos en la sierra local, garantizando un impacto ambiental profundamente positivo.</p>
+                    </article>
+                </div>
+            </div>
+        </section>    
+    </main>
+
+    <!--Pie de pagina-->
+    <footer class="pie-pagina">
+    <!-- Bloque Superior (Las 3 Columnas) -->
+  <div class="footer-contenido"> 
+    <!-- Columna 1: Marca y Propósito -->
+    <div class="footer-columna info-marca">
+      <h2 class="footer-logo">Hermanos Jota</h2>
+      <p class="footer-descripcion">
+        Mobiliario de autor diseñado para sanar espacios cotidianos y respetar la biodiversidad terrestre de las generaciones futuras.
+      </p>
+      <span class="tag-huella-footer">🍃 HUELLA NEUTRA 2026</span>
+    </div>
+
+    <!-- Columna 2: Contacto -->
+    <div class="footer-columna">
+      <h3 class="footer-titulo-seccion">CONTACTO</h3>
+      <p>Calle del Taller 42, Ciudad</p>
+      <p><a href="tel:+5491142424242">+54 9 11 4242 4242</a></p>
+      <p><a href="mailto:hola@hermanosjota.com">hola@hermanosjota.com</a></p>
+    </div>
+
+    <!-- Columna 3: Redes -->
+    <div class="footer-columna">
+      <h3 class="footer-titulo-seccion">REDES</h3>
+      <ul class="footer-redes">
+        <li><a href="https://instagram.com" target="_blank" rel="noopener noreferrer">Instagram</a></li>
+        <li><a href="https://pinterest.com" target="_blank" rel="noopener noreferrer">Pinterest</a></li>
+        <li><a href="#">Journal</a></li>
+      </ul>
+    </div>
+
+  </div>
+  <hr class="footer-linea">
+  <!-- Bloque Inferior (Copyright) -->
+  <div class="footer-inferior">
+    <p>&copy; 2026 Hermanos Jota. Todos los derechos reservados.</p>
+    <p class="footer-eslogan">Artesanía lenta y diseño consciente.</p>
+  </div>
+    </footer>
+   
+    <!--Links para los script-->
+    <script src="data/productos.js"></script>
+    <script src="js/home.js"></script>
+</body>  
+</html>
