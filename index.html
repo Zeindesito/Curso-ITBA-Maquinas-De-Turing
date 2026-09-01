@@ -11,12 +11,12 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700&family=Playfair+Display:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet">
 
     <!--Para el css-->
-    <link rel="stylesheet" href="">
+    <link rel="stylesheet" href="index.css">
 </head>
 <body>
     <header class="encabezado-principal">
-        <a href="index.html" class="logo">hj</a>
-
+        <!--<a href="index.html" class="logo">hj</a>-->
+        <img src="file:///D:/ITBA%20FullStack/source/Kit%20de%20im%C3%A1genes/Kit%20de%20im%C3%A1genes/logo.svg" alt="Logo de Hermanos Jota" class="logo">
         <nav class="menu-navegacion">
             <ul>
                 <li><a href="productos.html" class="enlace-navegacion">Coleccion</a></li>
@@ -28,7 +28,12 @@
         <div class="bloque-derecho-header">
             <span class="tag-huella">🍃 HUELLA NEUTRA 2026</span>
             <button class="boton-carrito" id="boton-carrito" aria-label="Ver carrito">
-                <span id="contenedor-carrito">0</span>
+
+                <!--Icono del carrito-->
+                <img src="https://cdn-icons-png.flaticon.com/512/3144/3144456.png" alt="Carrito" class="icono-carrito">
+
+                
+                <span class="contador-carrito" id="contenedor-carrito">0</span>
             </button>
         </div>
     </header>
@@ -39,7 +44,7 @@
             <div class="contenido-hero">
                 <p class="subtitulo-superior">ARTESANÍA & CONSCIENCIA</p>
                 <h1 class="titulo-hero">Muebles que <br>alimentan el alma</h1>
-                <p>Nuestra colección combina la calidez del diseño clásico con la conciencia de la sustentabilidad.</p>
+                <p class="descripcion-hero">Nuestra colección combina la calidez del diseño clásico con la conciencia de la sustentabilidad.</p>
                 <div class="botones-hero">
                     <a href="productos.html" class="boton-principal">Explorar colección</a> 
                     <a href="#nosotros" class="boton-secundario">Nuestro manifiesto</a>    
