@@ -394,3 +394,29 @@ body {
 .producto-enlace:hover {
     color: #A0522D;/* Siena Tostado */
 }
+
+/*----------------------------------------------------------SECCION TALLER---------------------------------------------------*/
+.seccion-taller {
+    max-width: 1600px;/* Limita el ancho para pantallas grandes */
+    margin: 5rem auto;/* Centra la sección y agrega espacio superior e inferior */
+    padding: 0 4rem; 
+}
+
+.titulo-taller {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 2.6rem;
+    font-weight: 700;
+    line-height: 1.05;
+    color: #2D2622;
+    margin-top: 0.4rem;
+    margin-bottom: 1.8rem;
+}
+
+.imagen-taller-foto {
+    width: 100%;
+    max-width: 700px;
+    height: 500px;
+    object-fit: cover;/* Mantiene la proporción y recorta si es necesario */
+    border-radius: 16px;/* Bordes redondeados para suavizar la imagen */
+    display: block;/* Asegura que la imagen se comporte como un bloque */
+}
