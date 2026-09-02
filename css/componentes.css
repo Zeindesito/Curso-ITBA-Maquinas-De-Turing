@@ -77,8 +77,81 @@
 
 /* --- Tarjetas de producto (home, catalogo y recomendados) --- */
 /* .contenedor-grilla ya esta en layout.css. Falta lo de adentro: */
-/* .tarjeta-producto .imagen-producto .nombre-producto
-   .descripcion-producto .precio-producto .boton-ver-detalle    */
+
+.tarjeta-producto {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    grid-template-areas:
+        "imagen     imagen"
+        "nombre     precio"
+        "descripcion descripcion"
+        "boton      boton";
+    row-gap: 0.4rem;
+    column-gap: 0.75rem;
+}
+
+.imagen-producto {
+    grid-area: imagen;
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    object-fit: contain;
+    padding: 1.4rem;
+    border-radius: 8px;
+    margin-bottom: 0.6rem;
+    background: linear-gradient(155deg, var(--color-alabastro-calido), var(--color-verde-claro));
+    filter: drop-shadow(0 10px 14px rgba(0, 0, 0, 0.12));
+}
+
+.nombre-producto {
+    grid-area: nombre;
+    font-size: 1.1rem;
+    align-self: baseline;
+}
+
+.precio-producto {
+    grid-area: precio;
+    font-family: var(--font-primary);
+    font-weight: 700;
+    font-size: 0.95rem;
+    color: var(--color-siena-tostado);
+    white-space: nowrap;
+    justify-self: end;
+    align-self: baseline;
+}
+
+.descripcion-producto {
+    grid-area: descripcion;
+    font-size: 0.88rem;
+    color: var(--color-gris-oscuro);
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.boton-ver-detalle {
+    grid-area: boton;
+    justify-self: start;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    font-family: var(--font-primary);
+    font-weight: 600;
+    font-size: 0.85rem;
+    color: var(--color-siena-tostado);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    margin-top: 0.2rem;
+}
+
+.boton-ver-detalle::after {
+    content: "→";
+    text-decoration: none;
+}
+
+.boton-ver-detalle:hover {
+    color: var(--color-siena-hover);
+}
 
 
 /* --- Pagina de catalogo --- */
