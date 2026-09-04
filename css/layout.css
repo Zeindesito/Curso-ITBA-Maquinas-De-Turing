@@ -13,12 +13,12 @@
     z-index: 1000;
 }
 
-.logo {
-    font-size: 2.5rem;
-    color: var(--color-siena-tostado);
-    line-height: 1;
-    text-decoration: none;
+.logo   {
+    height: 80px; /* 120 es el tamaño original del logo segun lo que dice el manual de marca "120 para formatos digitales"*/
+    width: auto; /* y para mantener la proporción */
 }
+
+
 
 .menu-navegacion ul {
     display: flex;

@@ -129,6 +129,8 @@
     overflow: hidden;
 }
 
+
+
 .boton-ver-detalle {
     grid-area: boton;
     justify-self: start;
@@ -174,3 +176,270 @@
 
 /* --- Footer (lo que falta) --- */
 /* .footer-columna .info-marca .footer-redes .footer-eslogan     */
+
+/* ==========================================================================
+   1. PÁGINA DE CATÁLOGO
+   ========================================================================== */
+
+/* ==========================================================================
+   1. PÁGINA DE CATÁLOGO
+   ========================================================================== */
+
+.pagina-catalogo {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 3rem 1.5rem;
+}
+
+.encabezado-catalogo {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.titulo-catalogo {
+  font-size: 2.5rem;
+  margin-bottom: 0.75rem;
+}
+
+.descripcion-catalogo {
+  font-size: 1rem;
+  color: var(--color-gris-oscuro);
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.contenedor-filtros {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 2.5rem;
+}
+
+#campo-busqueda {
+  width: 100%;
+  max-width: 450px;
+  padding: 12px 16px;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  border-radius: 4px;
+  background-color: var(--color-blanco);
+  font-family: var(--font-primary);
+  font-size: 0.9rem;
+  color: var(--color-negro);
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+#campo-busqueda:focus {
+  outline: none;
+  border-color: var(--color-siena-tostado);
+  box-shadow: 0 0 0 3px rgba(160, 82, 45, 0.15);
+}
+
+.seccion-grilla-catalogo {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 2rem;
+  margin-bottom: 3rem;
+}
+
+.contenedor-boton-cargar {
+  display: flex;
+  justify-content: center;
+  margin-top: 2rem;
+}
+
+
+/* ==========================================================================
+   2. PÁGINA DE DETALLE
+   ========================================================================== */
+
+.imagen-detalle {
+  width: 100%;
+  max-width: 550px;
+  height: auto;
+  border-radius: 4px;
+  object-fit: cover;
+}
+
+.info-detalle {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.nombre-detalle {
+  font-size: 2.25rem;
+  line-height: 1.2;
+}
+
+.descripcion-detalle {
+  font-size: 1rem;
+  color: var(--color-gris-oscuro);
+  line-height: 1.7;
+}
+
+.ficha-tecnica {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1.5rem 0;
+  background-color: var(--color-blanco);
+  border-radius: 4px;
+  overflow: hidden;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.fila-ficha {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.fila-ficha:last-child {
+  border-bottom: none;
+}
+
+.etiqueta-ficha {
+  padding: 12px 16px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--color-gris-oscuro);
+  text-align: left;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  width: 40%;
+  background-color: rgba(245, 230, 211, 0.2);
+}
+
+.valor-ficha {
+  padding: 12px 16px;
+  font-size: 0.9rem;
+  color: var(--color-negro);
+}
+
+.precio-detalle {
+  font-family: var(--font-secondary);
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--color-siena-tostado);
+}
+
+.seccion-historia {
+  margin-top: 3.5rem;
+  padding-top: 2.5rem;
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.contenedor-historia {
+  max-width: 800px;
+  margin: 0 auto;
+  background-color: var(--color-blanco);
+  padding: 2.5rem;
+  border-radius: 4px;
+  border-left: 4px solid var(--color-verde-salvia);
+}
+
+.titulo-historia {
+  font-size: 1.75rem;
+  margin-bottom: 1rem;
+}
+
+.descripcion-historia {
+  font-size: 1rem;
+  color: var(--color-gris-oscuro);
+  line-height: 1.7;
+}
+
+
+/* ==========================================================================
+   3. FORMULARIO DE CONTACTO (VALIDACIÓN)
+   ========================================================================== */
+
+.grupo-campo {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 0.5rem;
+}
+
+.fila-formulario {
+  display: flex;
+  gap: 1.5rem;
+  width: 100%;
+}
+
+.fila-formulario .grupo-campo {
+  flex: 1;
+}
+
+.mensaje-error {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #C53030;
+  margin-top: -1rem;
+  margin-bottom: 1rem;
+  display: block;
+}
+
+.mensaje-exito {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #276749;
+  background-color: var(--color-verde-claro);
+  border: 1px solid var(--color-verde-salvia);
+  padding: 12px 16px;
+  border-radius: 4px;
+  margin-top: 1rem;
+  text-align: center;
+}
+
+.campo--error {
+  border-color: #C53030 !important;
+  background-color: #FFF5F5;
+}
+
+.campo--error:focus {
+  border-color: #C53030 !important;
+  box-shadow: 0 0 0 3px rgba(197, 48, 48, 0.15) !important;
+}
+
+
+/* ==========================================================================
+   4. FOOTER (LO QUE FALTA)
+   ========================================================================== */
+
+.footer-columna {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  flex: 1;
+  min-width: 220px;
+}
+
+.info-marca {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  color: var(--color-alabastro-calido);
+}
+
+.footer-redes {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  margin-top: 0.5rem;
+}
+
+.footer-redes a {
+  color: var(--color-alabastro-calido);
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.footer-redes a:hover {
+  color: var(--color-vara-de-oro);
+  transform: translateY(-2px);
+}
+
+.footer-eslogan {
+  font-family: var(--font-secondary);
+  font-size: 0.9rem;
+  font-style: italic;
+  color: var(--color-alabastro-calido);
+  opacity: 0.85;
+  line-height: 1.5;
+}
