@@ -11,15 +11,16 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700&family=Playfair+Display:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet">
 
     <!--Para el css-->
-    <link rel="stylesheet" href="css/base.css">
-    <link rel="stylesheet" href="css/layout.css">
-    <!-- Va ultimo: lo que se escriba aca gana sobre base y layout -->
-    <link rel="stylesheet" href="css/componentes.css">
+<link rel="stylesheet" href="css/base.css">
+<link rel="stylesheet" href="css/layout.css">
+<!-- Va ultimo: lo que se escriba aca gana sobre base y layout -->
+<link rel="stylesheet" href="css/componentes.css">
+<link rel="stylesheet" href="index.css">
 </head>
 <body>
     <header class="encabezado-principal">
-        <a href="index.html" class="logo">hj</a>
-
+        <!-- <a href="index.html" class="logo">hj</a> -->
+        <img src="source/logo.svg" alt="Logo Hermanos Jota" class="logo">
         <nav class="menu-navegacion">
             <ul>
                 <li><a href="productos.html" class="enlace-navegacion">Coleccion</a></li>
@@ -31,7 +32,10 @@
         <div class="bloque-derecho-header">
             <span class="tag-huella">🍃 HUELLA NEUTRA 2026</span>
             <button class="boton-carrito" id="boton-carrito" aria-label="Ver carrito">
-                <span class="contador-carrito" id="contador-carrito">0</span>
+<!--Icono del carrito-->
+<img src="https://cdn-icons-png.flaticon.com/512/3144/3144456.png" alt="Carrito" class="icono-carrito">
+
+<span class="contador-carrito" id="contador-carrito">0</span>
             </button>
         </div>
     </header>
@@ -42,11 +46,16 @@
             <div class="contenido-hero">
                 <p class="subtitulo-superior">ARTESANÍA & CONSCIENCIA</p>
                 <h1 class="titulo-hero">Muebles que <br>alimentan el alma</h1>
-                <p>Nuestra colección combina la calidez del diseño clásico con la conciencia de la sustentabilidad.</p>
+                <p class="descripcion-hero">Nuestra colección combina la calidez del diseño clásico con la conciencia de la sustentabilidad.</p>
+
                 <div class="botones-hero">
                     <a href="productos.html" class="boton-principal">Explorar colección</a> 
                     <a href="#nosotros" class="boton-secundario">Nuestro manifiesto</a>    
-                </div>
+                </div>                
+            </div>
+            <!--Imagen-->
+            <div class="imagen-hero-caja">
+                 <img src="source\imagen index.png" alt="Muebles de madera" class="imagen-hero">
             </div>
         </section>
         <section class="seccion-cita" id="nosotros">
@@ -57,23 +66,101 @@
         </section>
     <!--Productos destacados-->
         <section class="seccion-destacados">
-            <p class="subtitulo-superior">EDICIONES LIMITADAS</p>
-            <h2>Piezas con alma propia</h2>
-            <a href="productos.html" class="boton-secundario">Ver toda la colección</a>
+            <div class="destacados-header">
+             <!-- Textos agrupados a la izquierda -->
+             <div class="destacados-titulos">
+             <p class="subtitulo-superior">EDICIONES LIMITADAS</p>
+             <h2 class="titulo-seccion">Piezas Con Alma Propia</h2>
+             </div>
+              <!-- Botón que será empujado a la derecha -->
+             <a href="productos.html" class="boton-coleccion">VER TODA LA COLECCIÓN</a>
+            </div>
             <!--gancho para productos destacados JS creo-->
-            <div id="contenedor-destacados" class="contenedor-grilla"></div>
+            <div id="contenedor-destacados" class="contenedor-grilla">
+                <!-- Tarjeta 1 -->
+                <article class="tarjeta-producto">
+            <div class="producto-imagen-caja">
+                <img src="source/Sillón Copacabana.png" alt="Sillón Amanecer" class="producto-imagen">
+            </div>
+            <div class="producto-info">
+                <div class="producto-fila-cabecera">
+                    <h3 class="producto-nombre">Sillón Amanecer</h3>
+                    <span class="producto-precio">$890</span>
+                </div>
+                <p class="producto-descripcion">Líneas curvas inspiradas en el optimismo de los 60. Estructura de nogal recuperado y lino orgánico.</p>
+                <!-- Botón de acción -->
+                <a href="#" class="producto-enlace">Ver Detalles &rarr;</a>
+            </div>
+        </article>
+
+        <!-- Tarjeta 2 -->
+        <article class="tarjeta-producto">
+            <div class="producto-imagen-caja">
+                <img src="source/Mesa de Centro Araucaria.png" alt="Mesa Raíces" class="producto-imagen">
+            </div>
+            <div class="producto-info">
+                <div class="producto-fila-cabecera">
+                    <h3 class="producto-nombre">Mesa Raíces</h3>
+                    <span class="producto-precio">$1,250</span>
+                </div>
+                <p class="producto-descripcion">
+                    Un tributo a la imperfección de la naturaleza. Madera sólida certificada tratada con aceites vegetales.
+                </p>
+                <!--Botón de acción-->
+                <a href="#" class="producto-enlace">Ver Detalles &rarr;</a>
+            </div>
+        </article>
+
+        <!-- Tarjeta 3 -->
+        <article class="tarjeta-producto">
+            <div class="producto-imagen-caja">
+                <img src="source/Biblioteca Recoleta.png" alt="Estante Horizonte" class="producto-imagen">
+            </div>
+            <div class="producto-info">
+                <div class="producto-fila-cabecera">
+                    <h3 class="producto-nombre">Estante Horizonte</h3>
+                    <span class="producto-precio">$620</span>
+                </div>
+                <p class="producto-descripcion">
+                    Modularidad escultural. Diseñado para adaptarse de forma fluida a tus espacios de vida en constante cambio.
+                </p>
+                <!--Botón de acción-->
+                <a href="#" class="producto-enlace">Ver Detalles &rarr;</a>
+            </div>
+        </article>
+
+        <!-- Tarjeta 4 -->
+        <article class="tarjeta-producto">
+            <div class="producto-imagen-caja">
+                <img src="source/Aparador Uspallata.png" alt="Lámpara Origen" class="producto-imagen">
+            </div>
+            <div class="producto-info">
+                <div class="producto-fila-cabecera">
+                    <h3 class="producto-nombre">Lámpara Origen</h3>
+                    <span class="producto-precio">$290</span>
+                </div>
+                <p class="producto-descripcion">
+                    Pantalla de cerámica local horneada a baja temperatura para reducir las emisiones de carbono del taller.
+                </p>
+                <a href="#" class="producto-enlace">Ver Detalles &rarr;</a>
+            </div>
+        </article>
+            </div>
         </section>
 
     <!--Taller-->
         <section id="taller" class="seccion-taller">
             <!--Encabezado seccion taller-->
-            <p class="subtitulo-superior">ARTESANÍA LENTA</p>
-            <h2 class="titulo-taller">Donde la madera vuelve a respirar</h2>
-            <!---->
+            <div class="taller-header">
+                <!--<h2 class="titulo-seccion">Nuestro Taller</h2>-->
+                <!--<p class="descripcion-seccion">Un espacio donde la madera recuperada encuentra su segunda vida, y cada pieza es un testimonio de respeto por la naturaleza.</p>-->
+                <p class="subtitulo-superior">ARTESANÍA LENTA</p>
+                <h2 class="titulo-taller">Donde la madera vuelve a respirar</h2>
+            </div>
             <div class="contenedor-taller">
                 <!--Imagen con texto superpuesto-->
                 <div class="taller-imagen-caja">
-                    <img src="assets/taller.jpg" alt="restauracion de madera" class="imagen-taller-foto">
+                    <img src="source/restauracion madera.png" alt="restauracion de madera" class="imagen-taller-foto">
                     <h3 class="texto-superpuesto">Restauración consciente de madera local</h3>
                 </div>
                 <!--Tarjetas informativas -->

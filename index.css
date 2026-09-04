@@ -1,0 +1,642 @@
+*{
+margin: 0%;
+padding: 0%;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    font-weight: 400;/* Regular */
+    font-size: 11.5pt;/* Rango 11-12pt del manual */
+    line-height: 1.6;
+    background-color: #F5E6D3;/* Alabastro Cálido */
+    color: #2D2622;
+}
+
+/* Contenedor Principal (Header) */
+.encabezado-principal {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5rem 4rem; 
+    background-color: #F5E6D3;/* Alabastro Cálido */
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+/* Logo */
+.logo {
+    width: 120px;/* Ajusta este valor al tamaño visual deseado (ej. 50px - 70px) */
+    height: auto;/* Mantiene la proporción original sin deformar */
+    display: block;
+}
+
+/* Navegación Central */
+.menu-navegacion ul {
+    display: flex;
+    list-style: none;
+    gap: 2.5rem;/* Separación uniforme entre enlaces */
+}
+
+.enlace-navegacion {
+    font-family: 'Inter', sans-serif;
+    font-weight: 400;/* Regular */
+    font-size: 11.5pt;
+    text-decoration: none;
+    color: #2D2622;
+    transition: color 0.2s ease;
+}
+
+.enlace-navegacion:hover {
+    color: #A0522D;/* Siena Tostado */
+}
+
+/* Bloque Derecho (Pill + Carrito) */
+.bloque-derecho-header {
+    
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+/* Huella Neutra 2026*/
+.tag-huella {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    background-color: rgba(135, 169, 107, 0.2); /* Verde Salvia atenuado de fondo */
+    color: #3b5327;/* Verde bosque de contraste */
+    font-family: 'Inter', sans-serif;
+    font-weight: 300;/* Light según guía de leyendas */
+    font-size: 9pt;/* Tamaño especificado para leyendas */
+    letter-spacing: 0.02em;/* Espaciado del manual */
+    padding: 0.45rem 0.9rem;
+    border-radius: 9999px;
+}
+
+/* Botón del Carrito */
+.boton-carrito {
+    position: relative; /* referencia para el contador */
+    background: none;/* Fondo transparente */
+    border: none;/* Sin borde */
+    cursor: pointer;/* Cambia el cursor al pasar sobre el botón */
+    display: inline-flex;/* Para centrar el icono */
+    align-items: center;/* Centrado vertical */
+    justify-content: center;/* Centrado horizontal */
+    color: #2D2622;
+    padding: 0.25rem;/* Espaciado interno */
+    overflow: visible;/* Permite que el contador sobresalga */
+}
+
+.icono-carrito {
+    width: 26px;
+    height: 26px;
+    display: block;/* Asegura que el icono se muestre correctamente */
+}
+
+.contador-carrito {
+    position: absolute;/* Posicionamiento relativo al botón del carrito */
+    top: -7px;
+    right: -8px;
+    min-width: 18px;
+    height: 18px;
+    padding: 0 4px;
+    border-radius: 9999px;
+    background-color: #A0522D;
+    color: #FFFFFF;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.7rem;
+    font-weight: 700;
+    line-height: 1;
+    display: flex;/* Para centrar el texto dentro del contador */
+    align-items: center;/* Centrado vertical */
+    justify-content: center;/* Centrado horizontal */
+    pointer-events: none;/* Evita que el contador interfiera con los clics del botón */
+    z-index: 2;/* Asegura que el contador esté por encima del icono del carrito */
+}
+/*----------------------------------------------------------HERO--------------------------------------------------*/
+.seccion-hero {
+    display: flex;/* Contenedor principal del Hero */
+    align-items: center;
+    justify-content: space-between;/* Distribuye el contenido en dos columnas */
+    gap: 4rem;/* Espacio entre la columna de texto y la imagen */
+    padding: 3rem 4rem 5rem 4rem; /* Margen interior armónico */
+    max-width: 1400px;/* Limita el ancho máximo para pantallas grandes */
+    margin: 0 auto;/* Centra la sección en pantallas muy anchas */
+}
+
+/* Columna Izquierda (Textos y Botones) */
+.contenido-hero {
+    flex: 1; /* Ocupa el 50% del espacio disponible */
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;     /* Alinea todo hacia la izquierda */
+}
+
+
+/* Título Principal */
+.titulo-hero {
+    font-family: 'Inter', sans-serif;
+    font-size: 4.5rem;                  /* Antes 3.5rem */
+    font-weight: 700;
+    line-height: 1.05;
+    color: #2D2622;
+    margin-bottom: 1.8rem;
+    letter-spacing: -0.04em;
+}
+
+/* Leyenda superior */
+.subtitulo-superior {
+    font-size: 0.9rem;
+    letter-spacing: 0.12em;
+    margin-bottom: 1.5rem;
+}
+
+/* Descripción */
+
+.seccion-hero {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 4rem;
+    /* Aumentamos el ancho máximo y el padding vertical */
+    max-width: 1600px;/* Antes 1400px: ahora abarca más pantalla */
+    margin: 0 auto;
+    padding: 5rem 4rem 7rem 4rem;/* Más espacio arriba y abajo */
+    min-height: calc(90vh - 100px);/* Ocupa casi toda la altura visible de la pantalla */
+}
+
+/* Columna izquierda */
+.contenido-hero {
+    flex: 1;/* Ocupa el 50% del espacio disponible */
+    max-width: 680px;/* Limita el ancho de la columna izquierda para mejorar la legibilidad */
+}
+
+.descripcion-hero {
+    font-size: 1.2rem;/* Antes 1.05rem */
+    line-height: 1.7;
+    margin-bottom: 2.5rem;
+    max-width: 580px;
+}
+
+/* Columna Derecha (Imagen) */
+.imagen-hero-caja {
+    flex: 1.2;                          /* Le da un poco más de peso visual a la imagen */
+    display: flex;
+    justify-content: flex-end;
+}
+
+.imagen-hero {
+    width: 100%;
+    max-width: 700px;
+    height: 500px;
+    object-fit: cover;/* Mantiene la proporción y recorta si es necesario */
+    border-radius: 16px;/* Bordes redondeados para suavizar la imagen */
+    display: block;/* Asegura que la imagen se comporte como un bloque */
+}
+
+/* Botones */
+.botones-hero {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+/* Botón Terracota Relleno */
+.boton-principal {
+    display: inline-block;
+    background-color: #C47A6D;   /* Rosa Polvoriento / Terracota suave de la guía */
+    color: #FFFFFF;
+    font-family: 'Inter', sans-serif;
+    font-weight: 500;           /* Inter Medium */
+    font-size: 0.78rem;
+    letter-spacing: 0.08em;     /* Espaciado del manual para CTAs */
+    text-decoration: none;
+    padding: 0.85rem 1.6rem;
+    border-radius: 6px;
+    border: 1px solid #C47A6D;
+    transition: all 0.2s ease;
+}
+
+.boton-principal:hover {
+    background-color: #A0522D;   /* Siena Tostado al pasar el mouse */
+    border-color: #A0522D;
+}
+
+/* Botón Claro con Borde */
+.boton-secundario {
+    display: inline-block;
+    background-color: transparent;
+    color: #2D2622;
+    font-family: 'Inter', sans-serif;
+    font-weight: 500;/* Inter Medium */
+    font-size: 0.78rem;/* Tamaño de fuente para CTAs */
+    letter-spacing: 0.08em;
+    text-decoration: none;
+    padding: 0.85rem 1.6rem;
+    border-radius: 6px;
+    border: 1px solid #2D2622;
+    transition: all 0.2s ease;/* Transición suave para hover */
+}
+
+.boton-secundario:hover {
+    background-color: #2D2622;
+    color: #F5E6D3;
+}
+
+/*----------------------------------------------------------SECCION CITA---------------------------------------------------*/
+.seccion-cita{
+    text-align: center;/* Centra el texto y elementos en línea */
+    max-width: 1600px;/* Limita el ancho para que no se estire demasiado */
+    margin: 0 auto;/* 'auto' a los lados centra la caja completa en la página */
+    padding: 0 1.5rem;/* Margen interno para pantallas pequeñas */
+}
+
+.texto-cita {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 3rem;
+    font-weight: 700;/* Negrita según el manual para títulos/citas */
+    line-height: 1.35;/* Espaciado de línea cómodo para citas */
+    color: #2D2622;
+    margin-bottom: 2rem;/* Espacio antes del autor */
+}
+
+.autor-cita {
+    display: block;/* Permite aplicarle márgenes y tipografía de bloque */
+    font-family: 'Inter', sans-serif;
+    font-weight: 500;/* Inter Medium */
+    font-size: 0.8rem;/* Tamaño de fuente para leyendas/subtítulos */
+    letter-spacing: 0.12em;
+    color: #87A96B;/* Tono verde bosque sobrio */
+    text-transform: uppercase;/* Convierte el texto a mayúsculas */
+    font-style: normal;/* Quita la cursiva por defecto de la etiqueta <cite> */
+}
+
+/*----------------------------------------------------------SECCION DESTACADOS---------------------------------------------------*/
+.seccion-destacados{
+    max-width: 1600px;/* Limita el ancho para pantallas grandes */
+    margin: 5rem auto;/* Centra la sección y agrega espacio superior e inferior */
+    padding: 0 4rem; 
+}
+
+.destacados-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 2.5rem;
+}
+
+.subtitulo-superior {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 0.3rem;
+}
+
+.titulo-seccion {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 2.6rem;
+    font-weight: 700;
+    color: #2D2622;
+    margin-top: 0.4rem;
+}
+
+.boton-coleccion{
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    /* Forma y bordes */
+    border: 1.5px solid #2D2622;
+    border-radius: 9999px;          /* Hace los lados completamente redondeados */
+    padding: 0.8rem 1.8rem;         /* Espacio interno para dar forma ovalada */
+    background-color: transparent;
+    /* Tipografía según manual (Inter Medium, mayúsculas, espaciado 0.08em) */
+    font-family: 'Inter', sans-serif;
+    font-weight: 500;
+    font-size: 0.78rem;
+    letter-spacing: 0.08em;
+    color: #2D2622;
+    text-decoration: none;
+    /* Transición de interacción */
+    transition: all 0.2s ease;/* Transición suave para hover */
+}
+
+/* Cuadrícula de 4 columnas */
+.contenedor-grilla {
+    display: grid;/* Utiliza un sistema de grilla para organizar las tarjetas */
+    grid-template-columns: repeat(4, 1fr); /* 4 columnas iguales */
+    gap: 1.5rem;/* Espacio entre tarjetas */
+}
+
+/* Tarjeta Individual */
+.tarjeta-producto {
+    display: flex;/* Contenedor flexible para la tarjeta */
+    flex-direction: column;/* Organiza la imagen y la información en columna */
+}
+
+/* Contenedor de la Imagen con esquinas redondeadas */
+.producto-imagen-caja {
+    width: 100%;
+    aspect-ratio: 1 / 1;/* Mantiene la foto en proporción cuadrada perfecta */
+    border-radius: 16px;
+    overflow: hidden;/* Evita que la imagen sobresalga de los bordes redondeados */
+    margin-bottom: 1.2rem;
+    
+}
+
+
+/*imagenes individuales*/
+.producto-imagen {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.3s ease;/* Transición suave para el efecto hover */
+    background-color: #f4f1f0;/* Color de fondo mientras carga la imagen */
+}
+
+.producto-nombre {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: #2D2622;
+}
+
+.producto-precio {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: #C47A6D;/* Rosa Polvoriento */
+}
+
+/* Descripción */
+.producto-descripcion {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #6E6660;
+    margin-bottom: 1rem;
+    flex-grow: 1;/* Empuja el enlace 'Ver Detalles' al fondo */
+}
+
+.producto-enlace {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: #2D2622;
+    text-decoration: underline;
+    text-underline-offset: 4px;
+    display: inline-block;
+    transition: color 0.2s ease;
+}
+
+.producto-enlace:hover {
+    color: #A0522D;/* Siena Tostado */
+}
+
+/*----------------------------------------------------------SECCION TALLER---------------------------------------------------*/
+.seccion-taller {
+    max-width: 1600px;/* Limita el ancho para pantallas grandes */
+    margin: 5rem auto;/* Centra la sección y agrega espacio superior e inferior */
+    padding: 0 4rem; 
+}
+
+.titulo-taller {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 2.6rem;
+    font-weight: 700;
+    line-height: 1.05;
+    color: #2D2622;
+    margin-top: 0.4rem;
+    margin-bottom: 1.8rem;
+}
+
+.imagen-taller-foto {
+    width: 100%;
+    max-width: 700px;
+    height: 500px;
+    object-fit: cover;/* Mantiene la proporción y recorta si es necesario */
+    border-radius: 16px;/* Bordes redondeados para suavizar la imagen */
+    display: block;/* Asegura que la imagen se comporte como un bloque */
+}
+
+.subtitulo-superior {
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    color: #5c6b61;
+    margin-bottom: 0.5rem;
+}
+
+/* --- GRID PRINCIPAL (2 COLUMNAS) --- */
+.contenedor-taller {
+    display: grid;
+    grid-template-columns: 1.4fr 1fr; /* Proporción imagen / tarjetas */
+    gap: 1.5rem;
+    align-items: stretch;
+}
+
+/* --- CONTENEDOR DE LA IMAGEN Y TEXTO SUPERPUESTO --- */
+.taller-imagen-caja {
+    position: relative;
+    border-radius: 16px;
+    overflow: hidden;
+    height: 100%;
+}
+
+.taller-imagen-caja .imagen-taller-foto {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.texto-superpuesto {
+    position: absolute;
+    bottom: 2rem;
+    left: 2rem;
+    right: 2rem;
+    color: #ffffff;
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 1.5rem;
+    font-weight: 400;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.6);
+    margin: 0;
+}
+
+
+.taller-tarjetas-caja {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    height: 100%;
+}
+
+.tarjeta-info-taller {
+    flex: 1; /* Hace que ambas tarjetas tengan la misma altura */
+    padding: 2.2rem 2rem;
+    border-radius: 16px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.titulo-tarjeta-taller {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 1.3rem;
+    margin-bottom: 0.8rem;
+    color: #2D2622;
+}
+
+.tarjeta-info-taller p {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: #4f5852;
+    margin: 0;
+}
+
+
+.tarjeta-clara {
+    background-color: #f3efe9; /* Beige cálido */
+}
+
+.tarjeta-verde {
+    background-color: #e0eae5; /* Verde salvia claro */
+}
+
+.tarjeta-verde .titulo-tarjeta-taller {
+    color: #3b5a4d;
+}
+
+/*----------------------------------------------------------SECCION CONTACTO---------------------------------------------------*/
+.pie-pagina {
+  background-color: #241f1c; 
+  color: #F5E6D3;
+  padding: 4.5rem 4rem 2rem;
+  font-family: 'Inter', system-ui, -apple-system, sans-serif; /* Tipografía Primaria */
+  box-sizing: border-box;
+}
+
+
+.footer-contenido {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr; /* Columna de marca más ancha que las otras dos */
+  gap: 3rem;
+  align-items: start;
+}
+
+
+.footer-logo {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #F5E6D3;
+  margin: 0 0 1.2rem;
+}
+
+.footer-descripcion {
+  font-size: 0.9rem;
+  line-height: 1.6;
+  color: #a39c94;
+  max-width: 360px;
+  margin: 0 0 1.5rem;
+}
+
+.tag-huella-footer {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  background-color: #87A96B; 
+  color: #ffffff;
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  padding: 0.4rem 0.9rem;
+  border-radius: 50px;
+}
+
+
+.footer-titulo-seccion {
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: #bd6348; /* Tono terracota */
+  margin: 0 0 1.2rem;
+}
+
+.footer-columna p {
+  font-size: 0.9rem;
+  line-height: 1.5;
+  color: #d1cbc4;
+  margin: 0 0 0.8rem;
+}
+
+.footer-columna a {
+  color: inherit;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.footer-columna a:hover {
+  color: #ffffff;
+}
+
+.footer-redes {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+.footer-redes li {
+  font-size: 0.9rem;
+}
+
+
+.footer-linea {
+  border: none;
+  border-top: 1px solid #3d3530;
+  max-width: 1200px;
+  margin: 3.5rem auto 1.5rem;
+}
+
+
+.footer-inferior {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.8rem;
+  color: #7d756d;
+}
+
+.footer-inferior p {
+  margin: 0;
+}
+
+.footer-eslogan {
+  color: #7d756d;
+}
+
+/* --- RESPONSIVE --- */
+@media (max-width: 850px) {
+  .pie-pagina {
+    padding: 3rem 1.5rem 1.5rem;
+  }
+
+  .footer-contenido {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .footer-inferior {
+    flex-direction: column;
+    gap: 0.8rem;
+    text-align: center;
+  }}
