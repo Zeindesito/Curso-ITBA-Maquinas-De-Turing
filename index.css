@@ -1,0 +1,596 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  font-weight: 400; /* Regular */
+  font-size: 11.5pt; /* Rango 11-12pt del manual */
+  line-height: 1.6;
+  background-color: #F5E6D3; /* Alabastro Cálido */
+  color: #2D2622;
+}
+
+/*----------------------------------------------------------HEADER--------------------------------------------------*/
+.encabezado-principal {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5rem 4rem;
+  background-color: #F5E6D3;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.logo {
+  width: 120px;
+  height: auto;
+  display: block;
+}
+
+.menu-navegacion ul {
+  display: flex;
+  list-style: none;
+  gap: 2.5rem;
+}
+
+.enlace-navegacion {
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
+  font-size: 11.5pt;
+  text-decoration: none;
+  color: #2D2622;
+  transition: color 0.2s ease;
+}
+
+.enlace-navegacion:hover {
+  color: #A0522D; /* Siena Tostado */
+}
+
+.bloque-derecho-header {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.tag-huella {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  background-color: rgba(135, 169, 107, 0.2);
+  color: #3b5327;
+  font-family: 'Inter', sans-serif;
+  font-weight: 300;
+  font-size: 9pt;
+  letter-spacing: 0.02em;
+  padding: 0.45rem 0.9rem;
+  border-radius: 9999px;
+}
+
+.boton-carrito {
+  position: relative;
+  background: none;
+  border: none;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: #2D2622;
+  padding: 0.25rem;
+  overflow: visible;
+}
+
+.icono-carrito {
+  width: 26px;
+  height: 26px;
+  display: block;
+}
+
+.contador-carrito {
+  position: absolute;
+  top: -7px;
+  right: -8px;
+  min-width: 18px;
+  height: 18px;
+  padding: 0 4px;
+  border-radius: 9999px;
+  background-color: #A0522D;
+  color: #FFFFFF;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.7rem;
+  font-weight: 700;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+  z-index: 2;
+}
+
+/*----------------------------------------------------------HERO--------------------------------------------------*/
+.seccion-hero {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 4rem;
+  max-width: 1600px;
+  margin: 0 auto;
+  padding: 5rem 4rem 7rem 4rem;
+  min-height: calc(90vh - 100px);
+}
+
+.contenido-hero {
+  flex: 1;
+  max-width: 680px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.titulo-hero {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 4.5rem;
+  font-weight: 700;
+  line-height: 1.05;
+  color: #2D2622;
+  margin-bottom: 1.8rem;
+  letter-spacing: -0.02em;
+}
+
+.descripcion-hero {
+  font-size: 1.2rem;
+  line-height: 1.7;
+  margin-bottom: 2.5rem;
+  max-width: 580px;
+  color: #655C54;
+}
+
+.imagen-hero-caja {
+  flex: 1.2;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.imagen-hero {
+  width: 100%;
+  max-width: 700px;
+  height: 500px;
+  object-fit: cover;
+  border-radius: 16px;
+  display: block;
+}
+
+.botones-hero {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.boton-principal {
+  display: inline-block;
+  background-color: #C47A6D; /* Rosa Polvoriento */
+  color: #FFFFFF;
+  font-family: 'Inter', sans-serif;
+  font-weight: 500;
+  font-size: 0.78rem;
+  letter-spacing: 0.08em;
+  text-decoration: none;
+  padding: 0.85rem 1.6rem;
+  border-radius: 6px;
+  border: 1px solid #C47A6D;
+  transition: all 0.2s ease;
+  text-transform: uppercase;
+}
+
+.boton-principal:hover {
+  background-color: #A0522D;
+  border-color: #A0522D;
+}
+
+.boton-secundario {
+  display: inline-block;
+  background-color: transparent;
+  color: #2D2622;
+  font-family: 'Inter', sans-serif;
+  font-weight: 500;
+  font-size: 0.78rem;
+  letter-spacing: 0.08em;
+  text-decoration: none;
+  padding: 0.85rem 1.6rem;
+  border-radius: 6px;
+  border: 1px solid #2D2622;
+  transition: all 0.2s ease;
+  text-transform: uppercase;
+}
+
+.boton-secundario:hover {
+  background-color: #2D2622;
+  color: #F5E6D3;
+}
+
+/*----------------------------------------------------------SECCION CITA---------------------------------------------------*/
+.seccion-cita {
+  text-align: center;
+  max-width: 1400px;
+  margin: 4rem auto 6rem;
+  padding: 0 2rem;
+}
+
+.texto-cita {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 2.5rem;
+  font-weight: 700;
+  line-height: 1.35;
+  color: #2D2622;
+  margin-bottom: 2rem;
+}
+
+.autor-cita {
+  display: block;
+  font-family: 'Inter', sans-serif;
+  font-weight: 500;
+  font-size: 0.8rem;
+  letter-spacing: 0.12em;
+  color: #87A96B; /* Verde Salvia */
+  text-transform: uppercase;
+  font-style: normal;
+}
+
+/*----------------------------------------------------------SECCION DESTACADOS---------------------------------------------------*/
+.seccion-destacados {
+  max-width: 1600px;
+  margin: 5rem auto;
+  padding: 0 4rem;
+}
+
+.destacados-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: 2.5rem;
+}
+
+/* Regla única y limpia para los subtítulos de sección */
+.subtitulo-superior {
+  display: block;
+  font-family: 'Inter', sans-serif;
+  font-size: 9pt;
+  font-weight: 300;
+  letter-spacing: 0.08em;
+  color: #655C54;
+  margin-bottom: 0.5rem;
+  text-transform: uppercase;
+}
+
+.titulo-seccion {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 2.6rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  color: #2D2622;
+  margin-top: 0.4rem;
+}
+
+.boton-coleccion {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1.5px solid #2D2622;
+  border-radius: 9999px;
+  padding: 0.8rem 1.8rem;
+  background-color: transparent;
+  font-family: 'Inter', sans-serif;
+  font-weight: 500;
+  font-size: 0.78rem;
+  letter-spacing: 0.08em;
+  color: #2D2622;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.boton-coleccion:hover {
+  background-color: #2D2622;
+  color: #F5E6D3;
+}
+
+.contenedor-grilla {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
+}
+
+.tarjeta-producto {
+  display: flex;
+  flex-direction: column;
+}
+
+.producto-imagen-caja {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  border-radius: 16px;
+  overflow: hidden;
+  margin-bottom: 1.2rem;
+}
+
+.producto-imagen {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.3s ease;
+  background-color: #f4f1f0;
+}
+
+.producto-imagen:hover {
+  transform: scale(1.03);
+}
+
+.producto-fila-cabecera {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 0.5rem;
+}
+
+.producto-nombre {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: #2D2622;
+}
+
+.producto-precio {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #C47A6D;
+}
+
+.producto-descripcion {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.85rem;
+  font-weight: 400;
+  line-height: 1.5;
+  color: #6E6660;
+  margin-bottom: 1rem;
+  flex-grow: 1;
+}
+
+.producto-enlace {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: #2D2622;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  display: inline-block;
+  transition: color 0.2s ease;
+}
+
+.producto-enlace:hover {
+  color: #A0522D;
+}
+
+/*----------------------------------------------------------SECCION TALLER---------------------------------------------------*/
+.seccion-taller {
+  max-width: 1600px;
+  margin: 5rem auto;
+  padding: 0 4rem;
+}
+
+.taller-header {
+  margin-bottom: 2rem;
+}
+
+.titulo-taller {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 2.6rem;
+  font-weight: 700;
+  line-height: 1.05;
+  letter-spacing: 0.05em;
+  color: #A0522D; /* Siena Tostado según manual */
+  margin-top: 0.4rem;
+}
+
+.contenedor-taller {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr;
+  gap: 1.5rem;
+  align-items: stretch;
+}
+
+.taller-imagen-caja {
+  position: relative;
+  border-radius: 16px;
+  overflow: hidden;
+  min-height: 480px;
+  height: 100%;
+}
+
+.taller-imagen-caja .imagen-taller-foto {
+  width: 100%;
+  height: 100%;
+  max-width: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.texto-superpuesto {
+  position: absolute;
+  bottom: 2rem;
+  left: 2rem;
+  right: 2rem;
+  color: #ffffff;
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 1.5rem;
+  font-weight: 400;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.6);
+  margin: 0;
+}
+
+.taller-tarjetas-caja {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  height: 100%;
+}
+
+.tarjeta-info-taller {
+  flex: 1;
+  padding: 2.5rem 2.2rem;
+  border-radius: 16px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.titulo-tarjeta-taller {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 1.35rem;
+  font-weight: 700;
+  margin-bottom: 0.8rem;
+  color: #2D2622;
+}
+
+.tarjeta-info-taller p {
+  font-family: 'Inter', sans-serif;
+  font-size: 11pt;
+  font-weight: 400;
+  line-height: 1.6;
+  color: #554d46;
+  margin: 0;
+}
+
+.tarjeta-clara {
+  background-color: rgba(255, 255, 255, 0.65);
+  border: 1px solid rgba(226, 211, 192, 0.7);
+}
+
+.tarjeta-verde {
+  background-color: #DDE7DB; /* Verde salvia claro suave */
+}
+
+.tarjeta-verde .titulo-tarjeta-taller {
+  color: #3b5a4d;
+}
+
+/*----------------------------------------------------------FOOTER---------------------------------------------------*/
+.pie-pagina {
+  background-color: #241f1c;
+  color: #F5E6D3;
+  padding: 4.5rem 4rem 2rem;
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  box-sizing: border-box;
+}
+
+.footer-contenido {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  gap: 3rem;
+  align-items: start;
+}
+
+.footer-logo {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 1.8rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  color: #F5E6D3;
+  margin: 0 0 1.2rem;
+}
+
+.footer-descripcion {
+  font-size: 11pt;
+  font-weight: 400;
+  line-height: 1.6;
+  color: #a39c94;
+  max-width: 360px;
+  margin: 0 0 1.5rem;
+}
+
+.tag-huella-footer {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  background-color: #87A96B;
+  color: #ffffff;
+  font-size: 9pt;
+  font-weight: 300;
+  letter-spacing: 0.02em;
+  padding: 0.4rem 0.9rem;
+  border-radius: 50px;
+}
+
+.footer-titulo-seccion {
+  font-size: 9pt;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: #D4A437; /* Vara de Oro */
+  margin: 0 0 1.2rem;
+  text-transform: uppercase;
+}
+
+.footer-columna p {
+  font-size: 11pt;
+  font-weight: 400;
+  line-height: 1.6;
+  color: #d1cbc4;
+  margin: 0 0 0.8rem;
+}
+
+.footer-columna a {
+  color: inherit;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.footer-columna a:hover {
+  color: #F5E6D3;
+}
+
+.footer-redes {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+.footer-redes li {
+  font-size: 11pt;
+  line-height: 1.6;
+}
+
+.footer-linea {
+  border: none;
+  border-top: 1px solid #3d3530;
+  max-width: 1200px;
+  margin: 3.5rem auto 1.5rem;
+}
+
+.footer-inferior {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 9pt;
+  font-weight: 300;
+  letter-spacing: 0.02em;
+  color: #7d756d;
+}
+
+.footer-inferior p {
+  margin: 0;
+}
+
+.footer-eslogan {
+  color: #7d756d;
+}
+
