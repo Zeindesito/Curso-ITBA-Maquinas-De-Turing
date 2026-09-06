@@ -43,6 +43,6 @@ function obtenerProductoPorId(id) {
  * @returns {string}
  */
 function formatearPrecio(valor) {
-  const numero = valor.toLocaleString("es-MX", { maximumFractionDigits: 0 });
+  const numero = valor.toLocaleString("es-AR", { maximumFractionDigits: 0 });
   return `$${numero} ARS`;
 }
