@@ -1,115 +1,150 @@
-/* ============================================================
-   DETALLE DE PRODUCTO  ->  producto.html
+/**
+ * detalle.js
+ * -----------------------------------------------------------------------
+ * Lógica exclusiva de producto.html:
+ *  - Lee el "id" del producto desde la URL (?id=...).
+ *  - Trae el producto (petición simulada async/await).
+ *  - Renderiza los datos, el selector de acabado y las piezas
+ *    complementarias en el DOM.
+ *  - Maneja el botón "Añadir al carrito" con addEventListener.
+ * -----------------------------------------------------------------------
+ */
 
-   Puntos de la consigna que cubre este archivo:
-   - Imagen grande y descripción completa
-   - Detalles de fabricación y precio
-   - Botón "Añadir al Carrito"
-   ============================================================ */
+let acabadoSeleccionado = null;
 
-
-/* ---------- 1. Elementos del HTML ---------- */
-
-const contenedorDetalle = document.getElementById("detalle-producto-principal");
-
-
-/* ---------- 2. Averiguar qué producto hay que mostrar ---------- */
-
-// Desde el catálogo llegamos acá con un link así:  producto.html?id=3
-// URLSearchParams sabe leer la parte de la dirección que va después del "?".
-const parametros = new URLSearchParams(window.location.search);
-const idTexto = parametros.get("id");
-
-// OJO con esto: lo que viene de la URL SIEMPRE es texto, nunca número.
-// El id del array en cambio es número. Si compararamos "3" === 3 nunca
-// darían iguales, así que lo convertimos con Number().
-const idBuscado = Number(idTexto);
-
-
-/* ---------- 3. Buscarlo en el array ---------- */
-
-function buscarProducto(id) {
-
-    for (let i = 0; i < productos.length; i++) {
-        if (productos[i].id === id) {
-            return productos[i]; // lo encontramos, cortamos acá
-        }
-    }
-
-    // Si el for terminó sin encontrar nada, avisamos con null.
-    return null;
+function obtenerIdDeUrl() {
+  const parametros = new URLSearchParams(window.location.search);
+  return parametros.get("id");
 }
 
-const productoElegido = buscarProducto(idBuscado);
+function pintarProducto(producto) {
+  document.querySelector("#titulo-pagina").textContent = `${producto.nombre} | Hermanos Jota`;
+  document.querySelector("#detalle-imagen").src = producto.imagen;
+  document.querySelector("#detalle-imagen").alt = producto.nombre;
+  document.querySelector("#detalle-nombre").textContent = producto.nombre;
+  document.querySelector("#detalle-precio").textContent = formatearPrecio(producto.precio);
+  document.querySelector("#detalle-descripcion").textContent = producto.descripcionLarga;
+  document.querySelector("#detalle-dimensiones").textContent = producto.dimensiones;
+  document.querySelector("#detalle-material").textContent = producto.materiales;
+  document.querySelector("#detalle-peso").textContent = `${producto.peso} kg`;
+  document.querySelector("#detalle-cuidados").textContent = producto.cuidados;
 
+  document.querySelector("#detalle-historia").textContent = producto.historia;
+  document.querySelector("#detalle-historia-imagen").src = producto.imagen;
+  document.querySelector("#detalle-historia-imagen").alt = `Detalle de fabricación de ${producto.nombre}`;
 
-/* ---------- 4. Dibujar el producto ---------- */
-
-function mostrarDetalle(producto) {
-
-    // Primero armamos la ficha técnica recorriendo el array "detalles".
-    // Vamos pegando el HTML de cada fila en una misma variable de texto.
-    let filasFicha = "";
-
-    for (let i = 0; i < producto.detalles.length; i++) {
-
-        const dato = producto.detalles[i];
-
-        filasFicha += `
-            <li class="fila-ficha">
-                <span class="etiqueta-ficha">${dato.etiqueta}</span>
-                <span class="valor-ficha">${dato.valor}</span>
-            </li>
-        `;
-    }
-
-    // Y después metemos todo junto en la página.
-    contenedorDetalle.innerHTML = `
-        <img class="imagen-detalle" src="${producto.imagen}" alt="${producto.nombre}">
-
-        <div class="info-detalle">
-            <h1 class="nombre-detalle">${producto.nombre}</h1>
-
-            <p class="descripcion-detalle">${producto.descripcion}</p>
-
-            <ul class="ficha-tecnica">
-                ${filasFicha}
-            </ul>
-
-            <p class="precio-detalle">$${producto.precio}</p>
-
-            <button class="boton-principal" id="boton-agregar">AÑADIR AL CARRITO</button>
-        </div>
-    `;
+  document.querySelector("#detalle-producto").classList.remove("oculto");
+  document.querySelector("#seccion-historia").classList.remove("oculto");
 }
 
+/** Renderiza las opciones de acabado de madera y maneja su selección. */
+function pintarAcabados(producto) {
+  const contenedor = document.querySelector("#acabados-opciones");
+  contenedor.innerHTML = "";
 
-/* ---------- 5. Arranque ---------- */
+  producto.acabados.forEach((acabado, indice) => {
+    const boton = document.createElement("button");
+    boton.type = "button";
+    boton.className = "acabado" + (indice === 0 ? " seleccionado" : "");
+    boton.innerHTML = `<span class="acabado__muestra" style="background-color:${acabado.hex}"></span>${acabado.nombre}`;
 
-// Puede pasar que alguien entre a producto.html sin ?id, o con un id que
-// no existe. En ese caso no hay nada que mostrar y avisamos.
-if (productoElegido === null) {
-
-    contenedorDetalle.innerHTML = `
-        <p>No encontramos ese producto.</p>
-        <a href="productos.html">Volver al catálogo</a>
-    `;
-
-} else {
-
-    mostrarDetalle(productoElegido);
-
-    // El botón recién existe DESPUÉS de que mostrarDetalle escribió el HTML.
-    // Por eso lo buscamos acá abajo y no al principio del archivo: antes de
-    // dibujar, getElementById devolvería null.
-    const botonAgregar = document.getElementById("boton-agregar");
-
-    botonAgregar.addEventListener("click", function () {
-
-        // agregarAlCarrito vive en js/carrito.js y espera el ID del producto,
-        // NO el objeto entero. Adentro guarda { id, cantidad } para poder
-        // sumar unidades si agregás el mismo mueble dos veces.
-        // Ella sola se encarga de actualizar el número del header.
-        agregarAlCarrito(productoElegido.id);
+    boton.addEventListener("click", () => {
+      contenedor.querySelectorAll(".acabado").forEach((b) => b.classList.remove("seleccionado"));
+      boton.classList.add("seleccionado");
+      acabadoSeleccionado = acabado.nombre;
     });
+
+    contenedor.appendChild(boton);
+  });
+
+  acabadoSeleccionado = producto.acabados[0]?.nombre ?? null;
 }
+
+function configurarBotonAgregar(producto) {
+  const boton = document.querySelector("#agregar-carrito");
+  const mensajeExito = document.querySelector("#detalle-mensaje-exito");
+
+  boton.addEventListener("click", () => {
+    agregarAlCarrito(producto.id, 1);
+
+    mensajeExito.textContent = `¡${producto.nombre} (${acabadoSeleccionado}) agregado al carrito!`;
+    mensajeExito.classList.remove("oculto");
+    boton.disabled = true;
+    boton.textContent = "Agregado ✓";
+
+    setTimeout(() => {
+      mensajeExito.classList.add("oculto");
+      boton.disabled = false;
+      boton.textContent = "Añadir Al Carrito";
+    }, 2200);
+  });
+}
+
+/** Crea una tarjeta de producto reducida para la grilla de complementarios. */
+function crearTarjetaComplementaria(producto) {
+  const articulo = document.createElement("article");
+  articulo.className = "tarjeta-producto";
+  articulo.innerHTML = `
+    <a href="producto.html?id=${producto.id}" class="tarjeta-producto__imagen">
+      <img src="${producto.imagen}" alt="${producto.nombre}" loading="lazy">
+    </a>
+    <div class="tarjeta-producto__cabecera">
+      <h3 class="tarjeta-producto__nombre">${producto.nombre}</h3>
+      <span class="tarjeta-producto__precio">${formatearPrecio(producto.precio)}</span>
+    </div>
+    <p class="tarjeta-producto__descripcion">${producto.descripcionCorta}</p>
+    <a href="producto.html?id=${producto.id}" class="enlace-detalle">Ver Detalles →</a>
+  `;
+  return articulo;
+}
+
+/** Elige hasta 3 piezas complementarias: primero de la misma categoría. */
+function elegirComplementarios(todos, productoActual) {
+  const mismaCategoria = todos.filter(
+    (p) => p.id !== productoActual.id && p.categoria === productoActual.categoria
+  );
+  const resto = todos.filter(
+    (p) => p.id !== productoActual.id && p.categoria !== productoActual.categoria
+  );
+  return [...mismaCategoria, ...resto].slice(0, 3);
+}
+
+function pintarComplementarios(todos, productoActual) {
+  const grilla = document.querySelector("#grilla-complementarios");
+  const seccion = document.querySelector("#seccion-complementarios");
+  const complementarios = elegirComplementarios(todos, productoActual);
+
+  if (complementarios.length === 0) return;
+
+  complementarios.forEach((producto) => grilla.appendChild(crearTarjetaComplementaria(producto)));
+  seccion.classList.remove("oculto");
+}
+
+async function iniciarDetalle() {
+  const cargando = document.querySelector("#detalle-cargando");
+  const noEncontrado = document.querySelector("#detalle-no-encontrado");
+  const id = obtenerIdDeUrl();
+
+  try {
+    const [productos, producto] = await Promise.all([
+      obtenerProductos(),
+      obtenerProductoPorId(id)
+    ]);
+    cargando.classList.add("oculto");
+
+    if (!producto) {
+      noEncontrado.classList.remove("oculto");
+      return;
+    }
+
+    pintarProducto(producto);
+    pintarAcabados(producto);
+    configurarBotonAgregar(producto);
+    pintarComplementarios(productos, producto);
+  } catch (error) {
+    cargando.textContent = "No se pudo cargar la pieza. Intentá de nuevo más tarde.";
+    console.error(error);
+  }
+}
+
+document.addEventListener("DOMContentLoaded", iniciarDetalle);

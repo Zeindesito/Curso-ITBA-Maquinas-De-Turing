@@ -1,112 +1,189 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hermanos Jota - Detalle de Producto</title>
-
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700&family=Playfair+Display:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/base.css">
-<link rel="stylesheet" href="css/layout.css">
-<!-- Va ultimo: lo que se escriba aca gana sobre base y layout -->
-<link rel="stylesheet" href="css/componentes.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title id="titulo-pagina">Producto | Hermanos Jota</title>
+  <link rel="icon" href="assets/logo.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
-    <header class="encabezado-principal">
-        <a href="index.html" class="logo">hj</a>
 
-        <nav class="menu-navegacion">
-            <ul>
-                <li><a href="productos.html" class="enlace-navegacion">Colección</a></li>
-                <li><a href="index.html#nosotros" class="enlace-navegacion">Nosotros</a></li>
-                <li><a href="index.html#taller" class="enlace-navegacion">Taller</a></li>
-                <li><a href="contacto.html" class="enlace-navegacion">Contacto</a></li>
-            </ul>
-        </nav>
-        
-        <div class="bloque-derecho-header">
-            <span class="tag-huella">🍃 HUELLA NEUTRA 2026</span>
-            <button class="boton-carrito" id="boton-carrito" aria-label="Ver carrito">
-                🛍️ <span class="contador-carrito" id="contador-carrito">0</span>
-            </button>
+  <!-- ============== HEADER ============== -->
+  <header class="encabezado">
+    <div class="contenedor encabezado__barra">
+      <a href="index.html" class="encabezado__marca">
+        <img src="assets/logo.svg" alt="Logo Hermanos Jota">
+      </a>
+
+      <nav class="nav-principal" id="nav-principal">
+        <ul class="nav-principal__lista">
+          <li><a href="index.html">Inicio</a></li>
+          <li><a href="productos.html" aria-current="page">Colección</a></li>
+          <li><a href="contacto.html">Contacto</a></li>
+        </ul>
+      </nav>
+
+      <div class="encabezado__acciones">
+        <div class="carrito-wrapper">
+          <button class="boton-carrito" id="boton-carrito" type="button" aria-label="Ver carrito">
+            <img src="https://cdn-icons-png.flaticon.com/512/3144/3144456.png" alt="Carrito" class="icono-carrito">
+            <span class="contador-carrito oculto" id="contador-carrito">0</span>
+          </button>
+
+          <div class="mini-carrito" id="mini-carrito">
+            <p class="mini-carrito__titulo">Tu carrito</p>
+            <p class="mini-carrito__vacio" id="mini-carrito-vacio">Todavía no agregaste piezas.</p>
+            <ul class="mini-carrito__lista" id="lista-mini-carrito"></ul>
+            <div class="mini-carrito__footer">
+              <button class="boton boton--secundario" id="vaciar-carrito" type="button">Vaciar carrito</button>
+            </div>
+          </div>
         </div>
-    </header>
 
-    <main>
-        <!--BLOQUE PRINCIPAL-->
-        <section id="detalle-producto-principal">
-            <!-- Contenido dinámico por js/producto.js -->
-        </section>
+        <button class="boton-menu" id="boton-menu" type="button" aria-label="Abrir menú" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
 
-        <!--BLOQUE ESTÁTICO DE HISTORIA-->
-        <section class="seccion-historia">
-            <div class="contenedor-historia">
-                <p class="subtitulo-superior">EL ALMA DETRÁS DE LA MADERA</p>
-                <h2 class="titulo-historia">Una historia de rescate y paciencia ancestral</h2>
-                <p class="descripcion-historia">Cada pieza tiene origen en vigas recuperadas de demoliciones históricas o árboles caídos naturalmente por el paso de las tormentas de la sierra. No forzamos la tala. Permitimos que el tiempo cure la madera de manera orgánica.</p>
-            </div>
-            
-            <img src="assets/taller-detalle.jpg" alt="Taller de carpintería">
-            
-            <div>
-                <article class="tarjeta-info-taller tarjeta-clara">
-                    <h4 class="titulo-tarjeta-taller">Abastecimiento Ético</h4>
-                    <p>Trabajamos exclusivamente con árboles caídos de forma natural...</p>
-                </article>
-                <article class="tarjeta-info-taller tarjeta-verde">
-                    <h4 class="titulo-tarjeta-taller">Huella Regenerativa</h4>
-                    <p>Por cada pieza adquirida, plantamos tres árboles autóctonos en la sierra local...</p>
-                </article>
-            </div>
-        </section>
+  <main class="contenedor">
+    <div class="cargando" id="detalle-cargando">
+      <span class="cargando__spinner" aria-hidden="true"></span>
+      <span>Cargando pieza...</span>
+    </div>
 
-        <!-- BLOQUE DE RECOMENDADOS -->
-        <section class="seccion-destacados">
-            <p class="subtitulo-superior">ARMONIZA TU HOGAR</p>
-            <h2 class="titulo-seccion">Piezas complementarias recomendadas</h2>
-    
-            <div id="contenedor-recomendados" class="contenedor-grilla"></div>
-        </section>
-    </main>
+    <p class="mensaje-vacio oculto" id="detalle-no-encontrado">
+      No encontramos esa pieza. <a href="productos.html">Volver a la colección</a>.
+    </p>
 
-    <footer class="pie-pagina">
-        <div class="footer-contenido"> 
-            <div class="footer-columna info-marca">
-                <h2 class="footer-logo">Hermanos Jota</h2>
-                <p class="footer-descripcion">
-                    Mobiliario de autor diseñado para sanar espacios cotidianos y respetar la biodiversidad terrestre de las generaciones futuras.
-                </p>
-                <span class="tag-huella-footer">🍃 HUELLA NEUTRA 2026</span>
-            </div>
+    <article class="detalle-producto oculto" id="detalle-producto">
+      <div class="detalle-producto__imagen">
+        <img id="detalle-imagen" src="" alt="">
+      </div>
 
-            <div class="footer-columna">
-                <h3 class="footer-titulo-seccion">CONTACTO</h3>
-                <p>Calle del Taller 42, Ciudad</p>
-                <p><a href="tel:+5491142424242">+54 9 11 4242 4242</a></p>
-                <p><a href="mailto:hola@hermanosjota.com">hola@hermanosjota.com</a></p>
-            </div>
+      <div class="detalle-producto__info">
+        <span class="ojo-seccion" id="detalle-categoria">Ediciones Limitadas · Hecho a mano en Taller</span>
+        <h1 class="detalle-producto__nombre" id="detalle-nombre"></h1>
+        <p class="detalle-producto__precio" id="detalle-precio"></p>
+        <p class="detalle-producto__descripcion" id="detalle-descripcion"></p>
 
-            <div class="footer-columna">
-                <h3 class="footer-titulo-seccion">REDES</h3>
-                <ul class="footer-redes">
-                    <li><a href="https://instagram.com" target="_blank" rel="noopener noreferrer">Instagram</a></li>
-                    <li><a href="https://pinterest.com" target="_blank" rel="noopener noreferrer">Pinterest</a></li>
-                    <li><a href="#">Journal</a></li>
-                </ul>
-            </div>
+        <div class="acabados">
+          <p class="acabados__titulo">Acabado De La Madera</p>
+          <div class="acabados__opciones" id="acabados-opciones"></div>
         </div>
-        <hr class="footer-linea">
-        <div class="footer-inferior">
-            <p>&copy; 2026 Hermanos Jota. Todos los derechos reservados.</p>
-            <p class="footer-eslogan">Artesanía lenta y diseño consciente.</p>
-        </div>
-    </footer>
 
-    <!-- Scripts -->
-    <script src="data/productos.js"></script>
-    <script src="js/detalle.js"></script>
-    <script src="js/carrito.js"></script>
+        <div class="detalle-producto__acciones">
+          <button class="boton boton--principal" id="agregar-carrito" type="button">Añadir Al Carrito</button>
+          <a href="contacto.html" class="boton boton--secundario">Consultar Disponibilidad En Taller</a>
+        </div>
+
+        <p class="mensaje-exito oculto" id="detalle-mensaje-exito">
+          ¡Pieza agregada al carrito!
+        </p>
+
+        <dl class="ficha-tecnica">
+          <p class="ficha-tecnica__titulo">Ficha Técnica</p>
+          <div class="ficha-tecnica__fila">
+            <dt>Dimensiones</dt>
+            <dd id="detalle-dimensiones"></dd>
+          </div>
+          <div class="ficha-tecnica__fila">
+            <dt>Materiales</dt>
+            <dd id="detalle-material"></dd>
+          </div>
+          <div class="ficha-tecnica__fila">
+            <dt>Peso</dt>
+            <dd id="detalle-peso"></dd>
+          </div>
+          <div class="ficha-tecnica__fila">
+            <dt>Cuidados</dt>
+            <dd id="detalle-cuidados"></dd>
+          </div>
+        </dl>
+      </div>
+    </article>
+
+    <!-- ============== HISTORIA DEL PRODUCTO ============== -->
+    <section class="historia-producto oculto" id="seccion-historia">
+      <span class="ojo-seccion">El Alma Detrás De La Madera</span>
+      <h2 class="titulo-seccion">Una historia de rescate y paciencia ancestral</h2>
+
+      <div class="historia-producto__grid">
+        <div class="historia-producto__texto">
+          <p id="detalle-historia"></p>
+        </div>
+        <div class="historia-producto__imagen">
+          <img id="detalle-historia-imagen" src="" alt="" loading="lazy">
+        </div>
+      </div>
+    </section>
+
+    <!-- ============== SUSTENTABILIDAD ============== -->
+    <section class="artesania__tarjetas contenedor" style="flex-direction: column; margin-bottom: 2rem;">
+      <div class="tarjeta-info tarjeta-info--claro">
+        <h3>Abastecimiento Ético</h3>
+        <p>Trabajamos exclusivamente con árboles caídos de forma natural y maderas de demolición históricas de la región, dándoles una segunda vida noble.</p>
+      </div>
+      <div class="tarjeta-info tarjeta-info--salvia">
+        <h3>Huella Regenerativa</h3>
+        <p>Por cada pieza adquirida, plantamos tres árboles autóctonos en la sierra local, garantizando un impacto ambiental profundamente positivo.</p>
+      </div>
+    </section>
+
+    <!-- ============== PIEZAS COMPLEMENTARIAS ============== -->
+    <section class="complementarios oculto" id="seccion-complementarios">
+      <span class="ojo-seccion">Armoniza Tu Hogar</span>
+      <h2 class="titulo-seccion">Piezas complementarias recomendadas</h2>
+      <div class="grilla-productos" id="grilla-complementarios"></div>
+    </section>
+  </main>
+
+  <!-- ============== FOOTER ============== -->
+  <footer class="pie">
+    <div class="contenedor">
+      <p class="pie__marca">Hermanos Jota</p>
+      <p class="pie__descripcion">Mobiliario de autor diseñado para sanar espacios cotidianos y respetar la biodiversidad terrestre de las generaciones futuras.</p>
+      <span class="insignia">🌱 Huella Neutra 2026</span>
+
+      <div class="pie__grilla">
+        <div class="pie__columna">
+          <h4>Contacto</h4>
+          <ul>
+            <li>Calle del Taller 42, Ciudad</li>
+            <li><a href="tel:+541142424242">+54 9 11 4242 4242</a></li>
+            <li><a href="mailto:hola@hermanosjota.com">hola@hermanosjota.com</a></li>
+          </ul>
+        </div>
+        <div class="pie__columna">
+          <h4>Redes</h4>
+          <ul>
+            <li><a href="https://instagram.com" target="_blank" rel="noopener noreferrer">Instagram</a></li>
+            <li><a href="https://pinterest.com" target="_blank" rel="noopener noreferrer">Pinterest</a></li>
+            <li><a href="#">Journal</a></li>
+          </ul>
+        </div>
+        <div class="pie__columna">
+          <h4>Navegación</h4>
+          <ul>
+            <li><a href="index.html">Inicio</a></li>
+            <li><a href="productos.html">Colección</a></li>
+            <li><a href="contacto.html">Contacto</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="pie__abajo">
+        <span>© 2026 Hermanos Jota. Todos los derechos reservados.</span>
+        <span>Artesanía lenta y diseño consciente.</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/data.js"></script>
+  <script src="js/api.js"></script>
+  <script src="js/cart.js"></script>
+  <script src="js/detalle.js"></script>
 </body>
 </html>
