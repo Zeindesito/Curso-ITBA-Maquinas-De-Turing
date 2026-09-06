@@ -44,5 +44,5 @@ function obtenerProductoPorId(id) {
  */
 function formatearPrecio(valor) {
   const numero = valor.toLocaleString("es-MX", { maximumFractionDigits: 0 });
-  return `$${numero} MXN`;
+  return `$${numero} ARS`;
 }
