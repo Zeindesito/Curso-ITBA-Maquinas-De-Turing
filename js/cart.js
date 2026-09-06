@@ -1,5 +1,5 @@
 /**
- * carrrito.js
+ * cart.js
  * -----------------------------------------------------------------------
  * Lógica del carrito de compras simulado (sin backend).
  * El carrito se guarda en localStorage para que el contador del header

@@ -1,129 +1,143 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hermanos Jota - Contacto</title>
-
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700&family=Playfair+Display:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet">
-
-    <link rel="stylesheet" href="css/base.css">
-<link rel="stylesheet" href="css/layout.css">
-<!-- Va ultimo: lo que se escriba aca gana sobre base y layout -->
-<link rel="stylesheet" href="css/componentes.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contacto | Hermanos Jota</title>
+  <meta name="description" content="Escribinos tus consultas sobre nuestras piezas de mobiliario de autor.">
+  <link rel="icon" href="assets/logo.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
-    <header class="encabezado-principal">
-        <a href="index.html" class="logo">hj</a>
-        <nav class="menu-navegacion">
-            <ul>
-                <li><a href="productos.html" class="enlace-navegacion">Colección</a></li>
-                <li><a href="index.html#nosotros" class="enlace-navegacion">Nosotros</a></li>
-                <li><a href="index.html#taller" class="enlace-navegacion">Taller</a></li>
-                <li><a href="contacto.html" class="enlace-navegacion">Contacto</a></li>
-            </ul>
-        </nav>
-        <div class="bloque-derecho-header">
-            <span class="tag-huella">🍃 HUELLA NEUTRA 2026</span>
-            <button class="boton-carrito" id="boton-carrito" aria-label="Ver carrito">
-            <span class="contador-carrito" id="contador-carrito">0</span>
-            </button>
-        </div>
-    </header>
 
-    <!--MAIN EXCLUSIVO DE LA PÁGINA DE CONTACTO-->
-    <main>
-        <section class="seccion-contacto-pagina">
-            <!-- Izquierda: Textos -->
-            <div class="info-contacto-pagina">
-                <h1 class="titulo-contacto">Diseñemos tu espacio de paz</h1>
-                <p class="descripcion-contacto">¿Buscas una medida especial o un diseño totalmente personalizado? Agenda una cita de consulta presencial o virtual en nuestro taller.</p>
-                
-                <p class="dato-contacto">Calle del Taller 42, Ciudad</p>
-                <p class="dato-contacto">hola@hermanosjota.com</p>
+  <!-- ============== HEADER ============== -->
+  <header class="encabezado">
+    <div class="contenedor encabezado__barra">
+      <a href="index.html" class="encabezado__marca">
+        <img src="assets/logo.svg" alt="Logo Hermanos Jota">
+      </a>
+
+      <nav class="nav-principal" id="nav-principal">
+        <ul class="nav-principal__lista">
+          <li><a href="index.html">Inicio</a></li>
+          <li><a href="productos.html">Colección</a></li>
+          <li><a href="contacto.html" aria-current="page">Contacto</a></li>
+        </ul>
+      </nav>
+
+      <div class="encabezado__acciones">
+        <div class="carrito-wrapper">
+          <button class="boton-carrito" id="boton-carrito" type="button" aria-label="Ver carrito">
+            <img src="https://cdn-icons-png.flaticon.com/512/3144/3144456.png" alt="Carrito" class="icono-carrito">
+            <span class="contador-carrito oculto" id="contador-carrito">0</span>
+          </button>
+
+          <div class="mini-carrito" id="mini-carrito">
+            <p class="mini-carrito__titulo">Tu carrito</p>
+            <p class="mini-carrito__vacio" id="mini-carrito-vacio">Todavía no agregaste piezas.</p>
+            <ul class="mini-carrito__lista" id="lista-mini-carrito"></ul>
+            <div class="mini-carrito__footer">
+              <button class="boton boton--secundario" id="vaciar-carrito" type="button">Vaciar carrito</button>
             </div>
-
-            <!--Derecha: Formulario-->
-            <div class="formulario">
-                <!-- novalidate: apaga la validacion propia del navegador para que el evento
-                 submit llegue a js/contacto.js y corra SU validacion -->
-                <!-- La clase "form-consulta" es la que busca js/contacto.js para engancharse.
-                     "novalidate" apaga la validacion propia del navegador, para que el evento
-                     submit llegue al JS y corra la validacion escrita a mano. -->
-                <form id="formulario-contacto" class="formulario-contacto form-consulta" novalidate>
-
-                    <div class="fila-formulario">
-                        <!-- Cada campo va envuelto en un div con id="campo-XXX":
-                             js/contacto.js le agrega la clase "campo--error" cuando falla. -->
-                        <div id="campo-nombre" class="grupo-campo">
-                            <label for="nombre">NOMBRE COMPLETO</label>
-                            <input type="text" id="nombre" name="nombre" class="campo-formulario" placeholder="Ej. Mateo Messi" required>
-                            <!-- Aca adentro escribe el texto del error js/contacto.js -->
-                            <span id="error-nombre" class="mensaje-error"></span>
-                        </div>
-
-                        <div id="campo-email" class="grupo-campo">
-                            <label for="email">EMAIL</label>
-                            <input type="email" id="email" name="email" class="campo-formulario" placeholder="mateo@ejemplo.com" required>
-                            <span id="error-email" class="mensaje-error"></span>
-                        </div>
-                    </div>
-
-                    <div id="campo-mensaje" class="grupo-campo">
-                        <label for="mensaje">MENSAJE O PROYECTO</label>
-                        <textarea id="mensaje" name="mensaje" class="campo-formulario" rows="5" placeholder="Cuéntanos qué tienes en mente..." required></textarea>
-                        <span id="error-mensaje" class="mensaje-error"></span>
-                    </div>
-
-                    <button type="submit" class="boton-principal">SOLICITAR CONSULTA</button>
-
-                    <!-- Arranca oculto. js/contacto.js le saca la clase "oculto" al enviar bien. -->
-                    <p class="mensaje-exito oculto">Gracias por escribirnos. Recibimos tu consulta y te respondemos a la brevedad.</p>
-                </form>
-            </div>
-
-        </section>
-    </main>
-
-    <footer class="pie-pagina">
-        <div class="footer-contenido"> 
-            <div class="footer-columna info-marca">
-                <h2 class="footer-logo">Hermanos Jota</h2>
-                <p class="footer-descripcion">
-                    Mobiliario de autor diseñado para sanar espacios cotidianos y respetar la biodiversidad terrestre de las generaciones futuras.
-                </p>
-                <span class="tag-huella-footer">🍃 HUELLA NEUTRA 2026</span>
-            </div>
-
-            <div class="footer-columna">
-                <h3 class="footer-titulo-seccion">CONTACTO</h3>
-                <p>Calle del Taller 42, Ciudad</p>
-                <p><a href="tel:+5491142424242">+54 9 11 4242 4242</a></p>
-                <p><a href="mailto:hola@hermanosjota.com">hola@hermanosjota.com</a></p>
-            </div>
-
-            <div class="footer-columna">
-                <h3 class="footer-titulo-seccion">REDES</h3>
-                <ul class="footer-redes">
-                    <li><a href="https://instagram.com" target="_blank" rel="noopener noreferrer">Instagram</a></li>
-                    <li><a href="https://pinterest.com" target="_blank" rel="noopener noreferrer">Pinterest</a></li>
-                    <li><a href="#">Journal</a></li>
-                </ul>
-            </div>
+          </div>
         </div>
 
-        <hr class="footer-linea">
+        <button class="boton-menu" id="boton-menu" type="button" aria-label="Abrir menú" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
 
-        <div class="footer-inferior">
-            <p>&copy; 2026 Hermanos Jota. Todos los derechos reservados.</p>
-            <p class="footer-eslogan">Artesanía lenta y diseño consciente.</p>
+  <main class="contenedor">
+    <!-- ============== CTA / FORMULARIO DE CONSULTA ============== -->
+    <section class="cta-consulta" style="border-top: none; padding-top: 2.5rem;">
+      <div class="cta-consulta__grid">
+        <div class="cta-consulta__info">
+          <span class="ojo-seccion">Diseño a medida</span>
+          <h1 class="titulo-seccion">Diseñemos tu espacio de paz</h1>
+          <p>¿Buscás una medida especial o un diseño totalmente personalizado? Agendá una cita de consulta presencial o virtual en nuestro taller.</p>
+          <div class="cta-consulta__contacto">
+            <span>Calle del Taller 42, Ciudad</span>
+            <a href="tel:+541142424242">+54 9 11 4242 4242</a>
+            <a href="mailto:hola@hermanosjota.com">hola@hermanosjota.com</a>
+          </div>
         </div>
-    </footer>
 
-    <!--Script de contacto-->
-    <script src="js/carrito.js"></script>
-    <script src="js/contacto.js"></script>
+        <div class="cta-consulta__formulario">
+          <form class="formulario form-consulta" novalidate>
+            <div class="formulario__fila">
+              <div class="campo" id="campo-nombre">
+                <label for="nombre">Nombre Completo</label>
+                <input type="text" id="nombre" name="nombre" placeholder="Ej. Mateo Jaramillo">
+                <span class="campo__error" id="error-nombre"></span>
+              </div>
+              <div class="campo" id="campo-email">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" placeholder="mateo@ejemplo.com">
+                <span class="campo__error" id="error-email"></span>
+              </div>
+            </div>
+
+            <div class="campo" id="campo-mensaje">
+              <label for="mensaje">Mensaje O Proyecto</label>
+              <textarea id="mensaje" name="mensaje" placeholder="Cuéntanos qué tienes en mente..."></textarea>
+              <span class="campo__error" id="error-mensaje"></span>
+            </div>
+
+            <button type="submit" class="boton boton--principal">Solicitar Consulta</button>
+
+            <p class="mensaje-exito oculto">¡Gracias! Recibimos tu consulta y te vamos a responder a la brevedad.</p>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ============== FOOTER ============== -->
+  <footer class="pie">
+    <div class="contenedor">
+      <p class="pie__marca">Hermanos Jota</p>
+      <p class="pie__descripcion">Mobiliario de autor diseñado para sanar espacios cotidianos y respetar la biodiversidad terrestre de las generaciones futuras.</p>
+      <span class="insignia">🌱 Huella Neutra 2026</span>
+
+      <div class="pie__grilla">
+        <div class="pie__columna">
+          <h4>Contacto</h4>
+          <ul>
+            <li>Calle del Taller 42, Ciudad</li>
+            <li><a href="tel:+541142424242">+54 9 11 4242 4242</a></li>
+            <li><a href="mailto:hola@hermanosjota.com">hola@hermanosjota.com</a></li>
+          </ul>
+        </div>
+        <div class="pie__columna">
+          <h4>Redes</h4>
+          <ul>
+            <li><a href="https://instagram.com" target="_blank" rel="noopener noreferrer">Instagram</a></li>
+            <li><a href="https://pinterest.com" target="_blank" rel="noopener noreferrer">Pinterest</a></li>
+            <li><a href="#">Journal</a></li>
+          </ul>
+        </div>
+        <div class="pie__columna">
+          <h4>Navegación</h4>
+          <ul>
+            <li><a href="index.html">Inicio</a></li>
+            <li><a href="productos.html">Colección</a></li>
+            <li><a href="contacto.html">Contacto</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="pie__abajo">
+        <span>© 2026 Hermanos Jota. Todos los derechos reservados.</span>
+        <span>Artesanía lenta y diseño consciente.</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/data.js"></script>
+  <script src="js/api.js"></script>
+  <script src="js/cart.js"></script>
+  <script src="js/contacto.js"></script>
 </body>
 </html>

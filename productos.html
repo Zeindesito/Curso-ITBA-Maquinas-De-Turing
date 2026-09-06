@@ -1,109 +1,161 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hermanos Jota - Catálogo</title>
-
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700&family=Playfair+Display:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet">
-
-    <link rel="stylesheet" href="css/base.css">
-<link rel="stylesheet" href="css/layout.css">
-<!-- Va ultimo: lo que se escriba aca gana sobre base y layout -->
-<link rel="stylesheet" href="css/componentes.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nuestra Colección | Hermanos Jota</title>
+  <meta name="description" content="Catálogo completo de mobiliario de autor de Hermanos Jota: sillones, mesas, estantes y más.">
+  <link rel="icon" href="assets/logo.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
-    <header class="encabezado-principal">
-        <a href="index.html" class="logo">hj</a>
 
-        <nav class="menu-navegacion">
-            <ul>
-                <li><a href="productos.html" class="enlace-navegacion">Colección</a></li>
-                <li><a href="index.html#nosotros" class="enlace-navegacion">Nosotros</a></li>
-                <li><a href="index.html#taller" class="enlace-navegacion">Taller</a></li>
-                <li><a href="contacto.html" class="enlace-navegacion">Contacto</a></li>
-            </ul>
-        </nav>
-        
-        <div class="bloque-derecho-header">
-            <span class="tag-huella">🍃 HUELLA NEUTRA 2026</span>
-            <button class="boton-carrito" id="boton-carrito" aria-label="Ver carrito">
-            <span class="contador-carrito" id="contador-carrito">0</span>
-            </button>
-        </div>
-    </header>
+  <!-- ============== HEADER ============== -->
+  <header class="encabezado">
+    <div class="contenedor encabezado__barra">
+      <a href="index.html" class="encabezado__marca">
+        <img src="assets/logo.svg" alt="Logo Hermanos Jota">
+      </a>
 
-    <!--MAIN DEL CATÁLOGO-->
-    <main class="pagina-catalogo">
-        
-        <!--Encabezado del catálogo -->
-        <div class="encabezado-catalogo">
-            <p class="subtitulo-superior">CATÁLOGO DE AUTOR</p>
-            <h1 class="titulo-catalogo">Nuestra Colección</h1>
-            <p class="descripcion-catalogo">
-                Mobiliario de herencia diseñado para durar generaciones. Cada pieza ha sido tallada y ensamblada a mano en nuestro taller utilizando madera de recuperación ética y acabados naturales libres de tóxicos.
-            </p>
-        </div>
+      <nav class="nav-principal" id="nav-principal">
+        <ul class="nav-principal__lista">
+          <li><a href="index.html">Inicio</a></li>
+          <li><a href="productos.html" aria-current="page">Colección</a></li>
+          <li><a href="contacto.html">Contacto</a></li>
+        </ul>
+      </nav>
 
-        <!--Gancho para los filtros-->
-        <div id="contenedor-filtros" class="contenedor-filtros">
-            <!-- Campo de busqueda: lo lee js/catalogo.js -->
-            <input type="search" id="campo-busqueda" placeholder="Buscar producto...">
-        </div>
+      <div class="encabezado__acciones">
+        <div class="carrito-wrapper">
+          <button class="boton-carrito" id="boton-carrito" type="button" aria-label="Ver carrito">
+            <img src="https://cdn-icons-png.flaticon.com/512/3144/3144456.png" alt="Carrito" class="icono-carrito">
+            <span class="contador-carrito oculto" id="contador-carrito">0</span>
+          </button>
 
-        <!--Gancho principal de la grilla-->
-        <section id="contenedor-catalogo" class="contenedor-grilla seccion-grilla-catalogo">
-            
-        </section>
-
-        <!--Botón de Cargar Más -->
-        <div class="contenedor-boton-cargar">
-            <button class="boton-secundario" id="boton-cargar-mas">CARGAR MÁS PRODUCTOS</button>
-        </div>
-
-    </main>
-
-    <!-- PIE DE PÁGINA -->
-    <footer class="pie-pagina">
-        <div class="footer-contenido"> 
-            <div class="footer-columna info-marca">
-                <h2 class="footer-logo">Hermanos Jota</h2>
-                <p class="footer-descripcion">
-                    Mobiliario de autor diseñado para sanar espacios cotidianos y respetar la biodiversidad terrestre de las generaciones futuras.
-                </p>
-                <span class="tag-huella-footer">🍃 HUELLA NEUTRA 2026</span>
+          <div class="mini-carrito" id="mini-carrito">
+            <p class="mini-carrito__titulo">Tu carrito</p>
+            <p class="mini-carrito__vacio" id="mini-carrito-vacio">Todavía no agregaste piezas.</p>
+            <ul class="mini-carrito__lista" id="lista-mini-carrito"></ul>
+            <div class="mini-carrito__footer">
+              <button class="boton boton--secundario" id="vaciar-carrito" type="button">Vaciar carrito</button>
             </div>
-
-            <div class="footer-columna">
-                <h3 class="footer-titulo-seccion">CONTACTO</h3>
-                <p>Calle del Taller 42, Ciudad</p>
-                <p><a href="tel:+5491142424242">+54 9 11 4242 4242</a></p>
-                <p><a href="mailto:hola@hermanosjota.com">hola@hermanosjota.com</a></p>
-            </div>
-
-            <div class="footer-columna">
-                <h3 class="footer-titulo-seccion">REDES</h3>
-                <ul class="footer-redes">
-                    <li><a href="https://instagram.com" target="_blank" rel="noopener noreferrer">Instagram</a></li>
-                    <li><a href="https://pinterest.com" target="_blank" rel="noopener noreferrer">Pinterest</a></li>
-                    <li><a href="#">Journal</a></li>
-                </ul>
-            </div>
+          </div>
         </div>
 
-        <hr class="footer-linea">
+        <button class="boton-menu" id="boton-menu" type="button" aria-label="Abrir menú" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
 
-        <div class="footer-inferior">
-            <p>&copy; 2026 Hermanos Jota. Todos los derechos reservados.</p>
-            <p class="footer-eslogan">Artesanía lenta y diseño consciente.</p>
+  <main class="contenedor">
+    <div class="catalogo-encabezado">
+      <span class="ojo-seccion">Catálogo De Autor</span>
+      <h1 class="titulo-seccion">Nuestra Colección</h1>
+      <p>Mobiliario de herencia diseñado para durar generaciones. Cada pieza ha sido tallada y ensamblada a mano en nuestro taller utilizando madera de recuperación ética y acabados naturales libres de tóxicos.</p>
+    </div>
+
+    <!-- Filtro por categorías -->
+    <div class="filtro-categorias" id="filtro-categorias">
+      <button class="filtro-categorias__pill activo" data-categoria="Todos" type="button">Todos</button>
+      <button class="filtro-categorias__pill" data-categoria="Sillones" type="button">Sillones</button>
+      <button class="filtro-categorias__pill" data-categoria="Mesas" type="button">Mesas</button>
+      <button class="filtro-categorias__pill" data-categoria="Estantes" type="button">Estantes</button>
+      <button class="filtro-categorias__pill" data-categoria="Iluminación" type="button">Iluminación</button>
+      <button class="filtro-categorias__pill" data-categoria="Accesorios" type="button">Accesorios</button>
+    </div>
+
+    <!-- Filtros avanzados + buscador -->
+    <div class="filtros-avanzados">
+      <div class="filtros-avanzados__grupo">
+        <label class="campo-select">
+          Material:
+          <select id="filtro-material">
+            <option value="">Todos los materiales</option>
+          </select>
+        </label>
+        <label class="campo-select">
+          Estilo:
+          <select id="filtro-estilo">
+            <option value="">Cualquier estilo</option>
+          </select>
+        </label>
+        <label class="campo-select">
+          Precio:
+          <select id="filtro-precio">
+            <option value="">Cualquiera</option>
+            <option value="0-10000">Hasta $10,000 MXN</option>
+            <option value="10000-25000">$10,000 – $25,000 MXN</option>
+            <option value="25000-999999">Más de $25,000 MXN</option>
+          </select>
+        </label>
+      </div>
+      <p class="filtros-avanzados__conteo">Mostrando <strong id="conteo-productos">0</strong> piezas únicas</p>
+    </div>
+
+    <div class="buscador">
+      <input type="search" id="buscador-productos" placeholder="Buscar por nombre (ej: sofá, mesa, escritorio)..." aria-label="Buscar productos">
+    </div>
+
+    <div class="cargando" id="catalogo-cargando">
+      <span class="cargando__spinner" aria-hidden="true"></span>
+      <span>Cargando colección...</span>
+    </div>
+
+    <p class="mensaje-vacio oculto" id="catalogo-vacio">No encontramos piezas que coincidan con tu búsqueda o filtros.</p>
+
+    <div class="grilla-productos catalogo-grilla" id="grilla-catalogo"></div>
+
+    <div class="catalogo__cargar-mas oculto" id="contenedor-cargar-mas">
+      <button class="boton boton--secundario" id="boton-cargar-mas" type="button">Cargar Más Productos</button>
+    </div>
+  </main>
+
+  <!-- ============== FOOTER ============== -->
+  <footer class="pie">
+    <div class="contenedor">
+      <p class="pie__marca">Hermanos Jota</p>
+      <p class="pie__descripcion">Mobiliario de autor diseñado para sanar espacios cotidianos y respetar la biodiversidad terrestre de las generaciones futuras.</p>
+      <span class="insignia">🌱 Huella Neutra 2026</span>
+
+      <div class="pie__grilla">
+        <div class="pie__columna">
+          <h4>Contacto</h4>
+          <ul>
+            <li>Calle del Taller 42, Ciudad</li>
+            <li><a href="tel:+541142424242">+54 9 11 4242 4242</a></li>
+            <li><a href="mailto:hola@hermanosjota.com">hola@hermanosjota.com</a></li>
+          </ul>
         </div>
-    </footer>
+        <div class="pie__columna">
+          <h4>Redes</h4>
+          <ul>
+            <li><a href="https://instagram.com" target="_blank" rel="noopener noreferrer">Instagram</a></li>
+            <li><a href="https://pinterest.com" target="_blank" rel="noopener noreferrer">Pinterest</a></li>
+            <li><a href="#">Journal</a></li>
+          </ul>
+        </div>
+        <div class="pie__columna">
+          <h4>Navegación</h4>
+          <ul>
+            <li><a href="index.html">Inicio</a></li>
+            <li><a href="productos.html">Colección</a></li>
+            <li><a href="contacto.html">Contacto</a></li>
+          </ul>
+        </div>
+      </div>
 
-    <!-- Scripts necesarios para esta página -->
-    <script src="data/productos.js"></script>
-    <script src="js/catalogo.js"></script>
-    <script src="js/carrito.js"></script>
+      <div class="pie__abajo">
+        <span>© 2026 Hermanos Jota. Todos los derechos reservados.</span>
+        <span>Artesanía lenta y diseño consciente.</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/data.js"></script>
+  <script src="js/api.js"></script>
+  <script src="js/cart.js"></script>
+  <script src="js/catalogo.js"></script>
 </body>
 </html>
