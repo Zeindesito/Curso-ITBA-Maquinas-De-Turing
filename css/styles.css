@@ -253,7 +253,10 @@ h1, h2, h3 {
 }
 
 .encabezado__marca img {
-  width: 120px;
+  /* Mobile first: en 375px un logo de 120px se comia el 32% del ancho de la
+     pantalla, y como el header es sticky no desaparecia nunca al scrollear.
+     El tamano grande vuelve en el bloque de min-width: 900px. */
+  width: 72px;
   height: auto;
 }
 
@@ -413,6 +416,16 @@ h1, h2, h3 {
   object-fit: contain;
   background-color: var(--color-fondo-alt);
   border-radius: 6px;
+}
+
+/* La genera js/cart.js. Envuelve el nombre y la cantidad de cada item.
+   min-width: 0 es lo que permite que un nombre largo se corte en vez de
+   estirar el flex y desbordar el panel. */
+.mini-carrito__info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+  min-width: 0;
 }
 
 .mini-carrito__nombre {
@@ -1166,6 +1179,11 @@ h1, h2, h3 {
    Media queries — Desktop (>= 900px)
    ========================================================================= */
 @media (min-width: 900px) {
+  /* En escritorio si hay lugar para el logo grande */
+  .encabezado__marca img {
+    width: 110px;
+  }
+
   .boton-menu {
     display: none;
   }

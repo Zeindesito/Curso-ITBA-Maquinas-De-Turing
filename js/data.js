@@ -8,13 +8,37 @@
  * -----------------------------------------------------------------------
  */
 
-/** Acabados de madera disponibles (compartidos por todo el catálogo). */
+/* Los tres acabados se declaran UNA sola vez y despues cada producto los
+   referencia con "acabados: ACABADOS". Asi, si manana se agrega un cuarto
+   acabado, se cambia solo aca y lo heredan los 11 muebles.
+
+   El "hex" es el color que pinta el circulito de muestra en la pagina de
+   detalle: detalle.js lo mete en un style="background-color:..." */
 const ACABADOS = [
   { nombre: "Nogal Natural", hex: "#4a3527" },
   { nombre: "Roble Claro", hex: "#c9a876" },
   { nombre: "Cerezo Oscuro", hex: "#6b2f28" }
 ];
 
+/* El array de objetos con los 11 muebles. Cada objeto es un producto y cada
+   propiedad cumple una funcion concreta en el sitio:
+
+     id ................. lo usa el link producto.html?id=N. No se puede repetir.
+     categoria .......... alimenta las pills del catalogo (Sillones, Mesas...)
+     estilo ............. alimenta el <select> de estilo
+     materialPrincipal .. alimenta el <select> de material
+     precio ............. numero puro, sin simbolos: formatearPrecio() lo viste
+     imagen ............. ruta desde la raiz del proyecto
+     descripcionCorta ... el parrafo de la tarjeta
+     descripcionLarga ... el parrafo de la pagina de detalle
+     historia ........... la seccion "El alma detras de la madera"
+     dimensiones, materiales, peso, cuidados .... la ficha tecnica
+     acabados ........... los botones de color del detalle
+     destacado .......... si es true, aparece en el home (lo filtra home.js)
+
+   Para agregar un mueble se copia un bloque entero, se le cambia el id por
+   uno que no exista y se completan los datos. No hay que tocar ningun otro
+   archivo: el catalogo, los filtros y el detalle lo levantan solos. */
 const PRODUCTOS = [
   {
     id: 1,
@@ -23,7 +47,7 @@ const PRODUCTOS = [
     estilo: "Mediados de Siglo",
     materialPrincipal: "Guindo",
     precio: 38900,
-    imagen: "assets/sofa-patagonia.png",
+    imagen: "assets/sofa-patagonia.webp",
     descripcionCorta: "Líneas curvas inspiradas en el optimismo de los 60. Estructura de guindo macizo y tapizado en boucle.",
     descripcionLarga:
       "Inspirado en el optimismo perdurable del diseño de mediados de siglo, el Sofá Patagonia fue moldeado con un respeto absoluto por la ecología actual. Sus almohadones desmontables y su estructura de guindo macizo abrazan el cuerpo de manera ergonómica, celebrando el espacio interior.",
@@ -43,7 +67,7 @@ const PRODUCTOS = [
     estilo: "Mediados de Siglo",
     materialPrincipal: "Cedro",
     precio: 24500,
-    imagen: "assets/sillon-copacabana.png",
+    imagen: "assets/sillon-copacabana.webp",
     descripcionCorta: "Sillón reclinable de líneas curvas, inspirado en el diseño brasileño de mediados de siglo.",
     descripcionLarga:
       "El Sillón Copacabana ofrece un respaldo curvo y un mecanismo de reclinado suave, moldeado a mano en cedro macizo. Una silueta orgánica pensada para sumar una butaca de lectura con personalidad propia a cualquier ambiente.",
@@ -63,7 +87,7 @@ const PRODUCTOS = [
     estilo: "Clásico Atemporal",
     materialPrincipal: "Algarrobo",
     precio: 16800,
-    imagen: "assets/butaca-mendoza.png",
+    imagen: "assets/butaca-mendoza.webp",
     descripcionCorta: "Butaca tapizada en lino natural, con patas de algarrobo torneadas a mano.",
     descripcionLarga:
       "La Butaca Mendoza suma calidez a cualquier ambiente gracias a su tapizado en lino y sus patas de algarrobo torneadas a mano. Un clásico atemporal, liviano y fácil de mover entre ambientes, sin sacrificar carácter.",
@@ -83,7 +107,7 @@ const PRODUCTOS = [
     estilo: "Rústico",
     materialPrincipal: "Araucaria",
     precio: 11200,
-    imagen: "assets/mesa-de-centro-araucaria.png",
+    imagen: "assets/mesa-de-centro-araucaria.webp",
     descripcionCorta: "Mesa ratona baja tallada en un solo tronco de araucaria maciza.",
     descripcionLarga:
       "Fabricada en madera de araucaria maciza, esta mesa de centro tiene un diseño bajo y liviano visualmente, pensado para acompañar sofás y sillones sin sobrecargar el espacio. Cada pieza conserva la silueta natural del tronco original.",
@@ -103,7 +127,7 @@ const PRODUCTOS = [
     estilo: "Contemporáneo",
     materialPrincipal: "Nogal",
     precio: 34900,
-    imagen: "assets/mesa-comedor-pampa.png",
+    imagen: "assets/mesa-comedor-pampa.webp",
     descripcionCorta: "Mesa de comedor para 6 personas, en nogal macizo con patas escultóricas en V.",
     descripcionLarga:
       "Un tributo a la imperfección de la naturaleza: la Mesa Comedor Pampa está construida en nogal macizo, con patas en forma de V que aportan estabilidad y un perfil escultural. Pensada para 6 comensales, es la protagonista de cualquier comedor.",
@@ -123,7 +147,7 @@ const PRODUCTOS = [
     estilo: "Minimalista",
     materialPrincipal: "Haya",
     precio: 7600,
-    imagen: "assets/sillas-cordoba.png",
+    imagen: "assets/sillas-cordoba.webp",
     descripcionCorta: "Sillas de comedor apilables, estructura de haya curvada (precio por unidad).",
     descripcionLarga:
       "Las Sillas Córdoba tienen estructura de madera curvada y asiento tapizado, diseñadas para combinar con cualquier mesa de comedor. Livianas, resistentes y apilables para facilitar su guardado en espacios reducidos.",
@@ -143,7 +167,7 @@ const PRODUCTOS = [
     estilo: "Contemporáneo",
     materialPrincipal: "Roble",
     precio: 29700,
-    imagen: "assets/aparador-uspallata.png",
+    imagen: "assets/aparador-uspallata.webp",
     descripcionCorta: "Aparador bajo con puertas y estantes internos regulables, en roble recuperado.",
     descripcionLarga:
       "Con puertas abatibles y estantes interiores regulables, el Aparador Uspallata ofrece guardado elegante para vajilla y mantelería. Su combinación de roble macizo y frentes lisos lo hace muy versátil para living o comedor.",
@@ -163,7 +187,7 @@ const PRODUCTOS = [
     estilo: "Rústico",
     materialPrincipal: "Pino",
     precio: 23400,
-    imagen: "assets/biblioteca-recoleta.png",
+    imagen: "assets/biblioteca-recoleta.webp",
     descripcionCorta: "Biblioteca modular de estantes abiertos, en pino macizo con laca protectora.",
     descripcionLarga:
       "La Biblioteca Recoleta tiene un diseño modular de estantes abiertos, ideal para libros, objetos decorativos y plantas. Su estructura reforzada soporta gran peso sin perder estabilidad, incluso en espacios de mucho uso.",
@@ -183,7 +207,7 @@ const PRODUCTOS = [
     estilo: "Minimalista",
     materialPrincipal: "Cerezo",
     precio: 6800,
-    imagen: "assets/mesa-de-noche-aconcagua.png",
+    imagen: "assets/mesa-de-noche-aconcagua.webp",
     descripcionCorta: "Mesa de luz compacta con cajón, en madera de cerezo recuperado.",
     descripcionLarga:
       "Compacta y funcional, la Mesa de Noche Aconcagua suma un cajón amplio y una repisa inferior abierta. Su tamaño la hace ideal tanto para dormitorios grandes como para espacios reducidos, sin perder calidez.",
@@ -203,7 +227,7 @@ const PRODUCTOS = [
     estilo: "Minimalista",
     materialPrincipal: "Pino",
     precio: 19500,
-    imagen: "assets/escritorio-costa.png",
+    imagen: "assets/escritorio-costa.webp",
     descripcionCorta: "Escritorio de trabajo con cajonera integrada y pasacables, en pino macizo.",
     descripcionLarga:
       "El Escritorio Costa fue pensado para el home office: superficie amplia, cajonera con llave y pasacables integrado. Su diseño minimalista en pino macizo se adapta a cualquier ambiente de trabajo, del más clásico al más nórdico.",
@@ -223,7 +247,7 @@ const PRODUCTOS = [
     estilo: "Contemporáneo",
     materialPrincipal: "Madera y cuero ecológico",
     precio: 13200,
-    imagen: "assets/silla-de-trabajo-belgrano.png",
+    imagen: "assets/silla-de-trabajo-belgrano.webp",
     descripcionCorta: "Silla ergonómica con altura regulable, estructura de madera y cuero ecológico.",
     descripcionLarga:
       "Diseñada para largas jornadas de trabajo, la Silla Belgrano cuenta con altura regulable, apoyabrazos y un respaldo que acompaña la curvatura de la espalda. Combina ergonomía y estética cálida, sin parecer una silla de oficina genérica.",

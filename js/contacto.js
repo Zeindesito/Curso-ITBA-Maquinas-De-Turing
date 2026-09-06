@@ -9,12 +9,30 @@
  * -----------------------------------------------------------------------
  */
 
+/* Una expresion regular es un patron para validar texto. Leida en partes:
+
+     ^            arranca aca
+     [^\s@]+      uno o mas caracteres que NO sean espacio ni arroba
+     @            una arroba
+     [^\s@]+      otra vez, uno o mas que no sean espacio ni arroba
+     \.           un punto literal (la barra invertida lo escapa)
+     [^\s@]+      lo mismo, para el "com"
+     $            termina aca
+
+   O sea: algo + arroba + algo + punto + algo, sin espacios. Es la validacion
+   minima razonable de un email. */
 const REGEX_EMAIL = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 /** Muestra un error debajo del campo indicado dentro de un formulario. */
+/* Marca un campo como invalido y escribe el mensaje debajo.
+
+   Arma los selectores concatenando: si le pasas "email", busca #campo-email
+   y #error-email. Por eso el HTML tiene que respetar esos nombres de id. */
 function mostrarError(form, nombreCampo, mensaje) {
   const campo = form.querySelector(`#campo-${nombreCampo}`);
   const error = form.querySelector(`#error-${nombreCampo}`);
+
+  // Si el HTML no tiene esos huecos, cortamos en vez de reventar.
   if (!campo || !error) return;
   campo.classList.add("campo--error");
   error.textContent = mensaje;
@@ -33,6 +51,15 @@ function limpiarError(form, nombreCampo) {
  * Valida los tres campos del formulario.
  * @returns {boolean} true si todo es válido.
  */
+/* Valida los tres campos y devuelve true solo si estan todos bien.
+
+   Detalle de diseno importante: NO corta en el primer error. La variable
+   esValido se pone en false pero la funcion sigue revisando los demas campos,
+   asi el usuario ve TODOS los errores de una vez en vez de descubrirlos de a
+   uno cada vez que aprieta enviar.
+
+   trim() saca los espacios de los bordes: asi tres espacios no cuentan como
+   un nombre valido. */
 function validarFormulario(form, datos) {
   let esValido = true;
 
@@ -73,6 +100,9 @@ function configurarFormulario(form) {
   const textoOriginalBoton = botonEnviar ? botonEnviar.textContent : "";
 
   form.addEventListener("submit", async (evento) => {
+    // preventDefault frena el comportamiento por defecto del formulario, que
+    // seria recargar la pagina y mandar los datos a un servidor. Como no hay
+    // backend, nos quedamos manejando todo con JavaScript.
     evento.preventDefault();
 
     const datos = {
